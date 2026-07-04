@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "motion/react";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Code2, Mail, MapPin, Network } from "lucide-react";
 import { ContourLayer } from "@/components/background/ContourLayer";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
@@ -39,8 +39,8 @@ export function Hero() {
           <aside className="flex items-end justify-between border-t border-[#f5f1e8]/15 pt-6 md:block md:border-l md:border-t-0 md:pl-8">
             <CompassGlyph className="h-24 w-24 text-[#c49a57] md:h-36 md:w-36" />
             <div className="flex gap-3 md:mt-10">
-              {[[Github, profile.github, "GitHub"], [Linkedin, profile.linkedin, "LinkedIn"], [Mail, `mailto:${profile.email}`, "Email"]].map(([Icon, href, label]) => {
-                const I = Icon as typeof Github;
+              {[[Code2, profile.github, "GitHub"], [Network, profile.linkedin, "LinkedIn"], [Mail, `mailto:${profile.email}`, "Email"]].map(([Icon, href, label]) => {
+                const I = Icon as typeof Code2;
                 return <a key={label as string} href={href as string} target={(label as string) !== "Email" ? "_blank" : undefined} rel="noreferrer" aria-label={label as string} className="grid h-10 w-10 place-items-center rounded-full border border-[#f5f1e8]/20 transition hover:border-[#c49a57] hover:text-[#c49a57]"><I size={16} /></a>;
               })}
             </div>
