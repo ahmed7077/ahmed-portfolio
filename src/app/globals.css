@@ -65,24 +65,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 .project-index { -webkit-text-stroke: 1px rgba(245,241,232,.28); color: transparent; }
 .lap-border { position: relative; isolation: isolate; }
 .lap-border::before {
-  content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: inherit; opacity: 0;
+  content: ""; position: absolute; inset: -3px; z-index: 3; border-radius: inherit; opacity: 0; pointer-events: none;
   background: conic-gradient(from 0deg, transparent 0 76%, #b86b4b 84%, #c49a57 91%, transparent 100%);
   padding: 2px;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
-.lap-border:hover::before, .lap-border:focus-visible::before { opacity: 1; animation: border-lap 1.15s linear infinite; }
-.ma-orbit { position: relative; }
+.lap-border:hover::before, .lap-border:focus-visible::before { opacity: 1; animation: border-lap .95s linear infinite; }
+.ma-orbit { position: relative; border: 1px solid rgba(196,154,87,.42); box-shadow: 0 0 24px rgba(196,154,87,.1); }
 .ma-orbit::before, .ma-orbit::after {
-  content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(196,154,87,.35);
+  content: ""; position: absolute; inset: -1px; z-index: 2; border-radius: 50%; border: 1px solid rgba(196,154,87,.5); pointer-events: none;
   animation: ma-pulse 3.6s ease-out infinite;
 }
 .ma-orbit::after { animation-delay: -1.8s; }
 .ambient-orbs span {
-  position: absolute; border-radius: 999px; opacity: .14;
+  position: absolute; border-radius: 999px; opacity: .22;
   background: radial-gradient(circle at 35% 30%, #e7dcc8, #c49a57 45%, transparent 72%);
   box-shadow: 0 0 36px rgba(196,154,87,.38);
-  animation: orb-drift 9s ease-in-out infinite alternate;
+  animation: orb-drift 7s ease-in-out infinite alternate;
 }
 .flow-orbit { animation: orbit-breathe 12s ease-in-out infinite alternate; }
 .boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
@@ -99,12 +99,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 .depth-card:hover { transform: perspective(1300px) rotateX(1.2deg) rotateY(-1.2deg) translateY(-9px) translateZ(18px); box-shadow: 0 34px 90px rgba(22,24,21,.22), 0 0 42px rgba(196,154,87,.1); }
 .depth-tile { transform: translateZ(0); transition: transform .6s cubic-bezier(.22,1,.36,1), background-color .6s ease; }
 .depth-tile:hover { z-index: 2; transform: perspective(900px) translateZ(22px) scale(1.015); background-color: #222a24; }
-.profile-radar::after {
-  content: ""; position: absolute; inset: -1px; border-radius: inherit;
-  background: conic-gradient(from 0deg, transparent 0 72%, rgba(196,154,87,.8) 88%, transparent 100%);
-  animation: radar-spin 5s linear infinite; mask: radial-gradient(transparent 68%, #000 69%);
-}
-@keyframes radar-spin { to { transform: rotate(360deg); } }
 @keyframes orbit-breathe { to { transform: translate(-40px, 50px) scale(1.12); } }
 @keyframes contour-drift { to { stroke-dashoffset: -120; } }
 @keyframes field-breathe { to { transform: scale(1.025) translate3d(-.8%, .6%, 0); opacity: .72; } }

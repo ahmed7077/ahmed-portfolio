@@ -19,13 +19,13 @@ export function Hero() {
       <ContourLayer />
       <div className="ambient-orbs absolute inset-0" aria-hidden="true">
         {[
-          ["12%", "24%", "18px", "0s"],
-          ["31%", "70%", "10px", "-3s"],
-          ["54%", "33%", "14px", "-6s"],
-          ["69%", "72%", "22px", "-9s"],
-          ["82%", "20%", "9px", "-4s"],
-          ["91%", "58%", "16px", "-7s"],
-          ["45%", "86%", "7px", "-2s"],
+          ["7%", "18%", "13px", "0s"], ["14%", "66%", "20px", "-2s"],
+          ["23%", "38%", "8px", "-5s"], ["31%", "78%", "12px", "-8s"],
+          ["39%", "16%", "17px", "-3s"], ["47%", "57%", "9px", "-6s"],
+          ["55%", "30%", "15px", "-10s"], ["61%", "84%", "7px", "-4s"],
+          ["68%", "49%", "22px", "-7s"], ["75%", "72%", "11px", "-1s"],
+          ["82%", "22%", "9px", "-9s"], ["87%", "87%", "18px", "-5s"],
+          ["92%", "44%", "13px", "-11s"], ["96%", "67%", "7px", "-3s"],
         ].map(([left, top, size, delay], index) => (
           <span key={index} style={{ left, top, width: size, height: size, animationDelay: delay }} />
         ))}
@@ -47,7 +47,7 @@ export function Hero() {
             <p className="mt-7 max-w-2xl text-base leading-7 text-[#f5f1e8]/72 md:text-lg">{profile.intro}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="#work" dark>Explore my work</Button>
-              <a href="/muhammad-ahmed-resume.pdf" target="_blank" className="lap-border inline-flex min-h-12 items-center rounded-full border border-[#f5f1e8]/25 px-6 text-sm text-[#f5f1e8]/75 transition hover:text-[#c49a57]">View resume ↗</a>
+              <a href="/muhammad-ahmed-resume.pdf" target="_blank" className="lap-border inline-flex min-h-12 items-center rounded-full border border-[#f5f1e8]/25 px-6 text-sm text-[#f5f1e8]/75 transition">View resume ↗</a>
             </div>
           </motion.div>
           <aside className="flex items-end justify-between border-t border-[#f5f1e8]/15 pt-6 md:flex md:min-h-[500px] md:flex-col md:items-center md:justify-center md:border-l md:border-t-0 md:pl-10 md:text-center">
@@ -64,7 +64,7 @@ export function Hero() {
                 ["linkedin", profile.linkedin, "LinkedIn"],
                 ["email", `mailto:${profile.email}`, "Email"],
               ].map(([kind, href, label]) => (
-                <a key={label} href={href} target={kind !== "email" ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="lap-border inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-[#f5f1e8]/20 px-2 text-[9px] uppercase tracking-wider transition hover:text-[#c49a57]">
+                <a key={label} href={href} target={kind !== "email" ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="lap-border inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-[#f5f1e8]/20 px-2 text-[9px] uppercase tracking-wider transition">
                   <SocialIcon kind={kind as "github" | "linkedin" | "email"} /><span className="hidden sm:inline">{label}</span>
                 </a>
               ))}

@@ -1,4 +1,3 @@
-import { Aperture } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 
 export function IdentityStudio() {
@@ -25,9 +24,9 @@ export function IdentityStudio() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px]">
             <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-[2.5rem] border border-[#1e3a34]/15" />
             <div className="identity-frame relative flex h-full items-center justify-center overflow-hidden rounded-[2.5rem] bg-[#1e3a34] shadow-[0_35px_90px_rgba(30,58,52,.24)]">
-              <div className="profile-radar relative grid h-48 w-48 place-items-center rounded-full border border-[#c49a57]/40">
-                <div className="absolute inset-6 rounded-full border border-dashed border-[#c49a57]/35" />
-                <Aperture size={46} strokeWidth={1} className="text-[#c49a57]" />
+              <div className="relative grid h-56 w-56 place-items-center rounded-full border border-[#c49a57]/40 shadow-[0_0_70px_rgba(196,154,87,.12)]">
+                <div className="absolute inset-6 rounded-full border border-[#c49a57]/20" />
+                <span className="font-display text-6xl text-[#e7dcc8]">MA<span className="text-[#b86b4b]">.</span></span>
               </div>
               <div className="absolute inset-x-0 bottom-0 flex justify-between bg-gradient-to-t from-[#161815]/80 to-transparent p-7 pt-20 font-mono text-[9px] uppercase tracking-widest text-[#f5f1e8]/60">
                 <span>Muhammad Ahmed</span><span>Portrait / 01</span>
