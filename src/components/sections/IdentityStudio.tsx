@@ -9,10 +9,10 @@ export function IdentityStudio() {
   const pointerY = useMotionValue(0);
   const lightX = useMotionValue(50);
   const lightY = useMotionValue(50);
-  const rotateX = useSpring(useTransform(pointerY, [-.5, .5], [11, -11]), { stiffness: 170, damping: 20 });
-  const rotateY = useSpring(useTransform(pointerX, [-.5, .5], [-13, 13]), { stiffness: 170, damping: 20 });
-  const imageX = useSpring(useTransform(pointerX, [-.5, .5], [-18, 18]), { stiffness: 140, damping: 22 });
-  const imageY = useSpring(useTransform(pointerY, [-.5, .5], [-14, 14]), { stiffness: 140, damping: 22 });
+  const rotateX = useSpring(useTransform(pointerY, [-.5, .5], [7, -7]), { stiffness: 170, damping: 20 });
+  const rotateY = useSpring(useTransform(pointerX, [-.5, .5], [-8, 8]), { stiffness: 170, damping: 20 });
+  const imageX = useSpring(useTransform(pointerX, [-.5, .5], [-14, 14]), { stiffness: 140, damping: 22 });
+  const imageY = useSpring(useTransform(pointerY, [-.5, .5], [-11, 11]), { stiffness: 140, damping: 22 });
   const sheen = useMotionTemplate`radial-gradient(circle at ${lightX}% ${lightY}%, rgba(245,241,232,.32), rgba(196,154,87,.08) 24%, transparent 52%)`;
 
   return (
@@ -47,12 +47,12 @@ export function IdentityStudio() {
             onPointerLeave={() => {
               pointerX.set(0); pointerY.set(0); lightX.set(50); lightY.set(50);
             }}
-            style={{ rotateX, rotateY, transformPerspective: 1100 }}
-            className="relative mx-auto aspect-[4/5] w-full max-w-[520px] [transform-style:preserve-3d]"
+            style={{ rotateX, rotateY, transformPerspective: 1500 }}
+            className="relative isolate mx-auto aspect-[4/5] w-full max-w-[520px] [backface-visibility:hidden]"
           >
-            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-[2.5rem] border border-[#1e3a34]/20 [transform:translateZ(-35px)]" />
-            <div className="relative h-full overflow-hidden rounded-[2.5rem] bg-[#090b0a] shadow-[0_40px_100px_rgba(30,58,52,.3)] [transform-style:preserve-3d]">
-              <motion.div style={{ x: imageX, y: imageY, scale: 1.08 }} className="absolute inset-[-3%] [transform:translateZ(45px)]">
+            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-[2.5rem] border border-[#1e3a34]/20" />
+            <div className="relative h-full overflow-hidden rounded-[2.5rem] bg-[#090b0a] shadow-[0_40px_100px_rgba(30,58,52,.3)] [backface-visibility:hidden]">
+              <motion.div style={{ x: imageX, y: imageY, scale: 1.08 }} className="absolute inset-[-3%]">
                 <Image src="/muhammad-ahmed-profile.jpg" alt="Portrait of Muhammad Ahmed" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
               </motion.div>
               <motion.div style={{ background: sheen }} className="pointer-events-none absolute inset-0 z-10 mix-blend-screen" />
