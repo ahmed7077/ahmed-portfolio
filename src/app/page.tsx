@@ -7,11 +7,14 @@ import { Contact, CredentialsAndFuture, Experience } from "@/components/sections
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { IdentityStudio } from "@/components/sections/IdentityStudio";
 import { SystemsView } from "@/components/sections/SystemsView";
+import { ScrollExperience } from "@/components/background/ScrollExperience";
+import { FlowInterlude } from "@/components/sections/FlowInterlude";
 
 export default function Home() {
   return (
     <main>
       <PaperGrain />
+      <ScrollExperience />
       <SmoothScroll />
       <ExpeditionNav />
       <Hero />
@@ -19,6 +22,7 @@ export default function Home() {
       <SystemsView />
       <FieldNotes />
       <GrowthMap />
+      <FlowInterlude />
       <FeaturedProject />
       <Projects />
       <KnowledgeNetwork />
