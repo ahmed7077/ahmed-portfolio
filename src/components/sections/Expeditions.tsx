@@ -22,7 +22,7 @@ export function Projects() {
         <SectionHeading index="04" title="Research expeditions" note="Engineering artifacts shaped by constraints: limited compute, imperfect data, and real environments." />
         <div className="space-y-5">
           {projects.map((project, index) => (
-            <motion.article key={project.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`group relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${tones[project.tone]} text-[#f5f1e8]`}>
+            <motion.article key={project.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`depth-card group relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${tones[project.tone]} text-[#f5f1e8]`}>
               <div className="absolute right-5 top-0 font-display text-[8rem] leading-none opacity-40 project-index md:text-[13rem]">0{index + 1}</div>
               <div className="relative grid min-h-[370px] gap-10 p-7 md:grid-cols-[.7fr_1.3fr] md:p-12">
                 <div className="flex flex-col justify-between">

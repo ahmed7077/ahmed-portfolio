@@ -21,7 +21,7 @@ export function SystemsView() {
         </div>
         <div className="grid gap-px overflow-hidden rounded-[2rem] bg-[#f5f1e8]/10 md:grid-cols-2">
           {systems.map(({ icon: Icon, number, title, copy, tags }, index) => (
-            <motion.article key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .3 }} transition={{ delay: index * .09 }} className="group relative min-h-[330px] overflow-hidden bg-[#1b1f1b] p-7 md:p-10">
+            <motion.article key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .3 }} transition={{ delay: index * .09 }} className="depth-tile group relative min-h-[330px] overflow-hidden bg-[#1b1f1b] p-7 md:p-10">
               <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-[#c49a57]/10 transition duration-700 group-hover:scale-150 group-hover:border-[#c49a57]/25" />
               <div className="flex items-start justify-between"><Icon size={28} strokeWidth={1} className="text-[#c49a57]" /><span className="font-mono text-[10px] text-[#f5f1e8]/30">{number}</span></div>
               <h3 className="mt-20 font-display text-3xl md:text-4xl">{title}</h3>
