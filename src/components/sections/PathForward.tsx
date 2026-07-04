@@ -88,8 +88,9 @@ export function Contact() {
           <button onClick={copyEmail} className="inline-flex items-center gap-3 rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Email copied" : "Copy email"}</button>
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">LinkedIn ↗</a>
           <a href={profile.github} target="_blank" rel="noreferrer" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">GitHub ↗</a>
+          <a href="/muhammad-ahmed-resume.pdf" target="_blank" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">Resume ↗</a>
         </div>
-        <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[#f5f1e8]/12 pt-6 font-mono text-[9px] uppercase tracking-[.18em] text-[#f5f1e8]/35 sm:flex-row"><span>© 2026 Muhammad Ahmed</span><span>Bengaluru · India · Earth</span><span>Resume coming soon</span></div>
+        <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[#f5f1e8]/12 pt-6 font-mono text-[9px] uppercase tracking-[.18em] text-[#f5f1e8]/35 sm:flex-row"><span>© 2026 Muhammad Ahmed</span><span>Bengaluru · India · Earth</span><a href="/muhammad-ahmed-resume.pdf" target="_blank">Download resume ↗</a></div>
       </Container>
     </footer>
   );

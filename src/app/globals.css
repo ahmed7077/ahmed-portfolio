@@ -25,6 +25,12 @@ body::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60;
   box-shadow: inset 0 0 120px rgba(22,24,21,.08);
 }
+main > section { position: relative; isolation: isolate; }
+main > section::after {
+  content: ""; position: absolute; inset: auto 7% 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(196,154,87,.42), transparent);
+  box-shadow: 0 0 26px rgba(196,154,87,.2);
+}
 ::selection { background: var(--forest); color: var(--paper); }
 a, button { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline-offset: 4px; }
@@ -58,6 +64,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 }
 .project-index { -webkit-text-stroke: 1px rgba(245,241,232,.28); color: transparent; }
 .flow-orbit { animation: orbit-breathe 12s ease-in-out infinite alternate; }
+.boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
+.identity-frame { transition: transform .8s cubic-bezier(.22,1,.36,1), box-shadow .8s ease; transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
+.identity-frame:hover { transform: perspective(1000px) rotateY(2deg) rotateX(-1deg) translateY(-8px); box-shadow: 0 45px 110px rgba(30,58,52,.34), 0 0 55px rgba(196,154,87,.12); }
 .profile-radar::after {
   content: ""; position: absolute; inset: -1px; border-radius: inherit;
   background: conic-gradient(from 0deg, transparent 0 72%, rgba(196,154,87,.8) 88%, transparent 100%);
