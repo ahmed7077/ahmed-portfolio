@@ -64,8 +64,8 @@ export function Hero() {
                 ["linkedin", profile.linkedin, "LinkedIn"],
                 ["email", `mailto:${profile.email}`, "Email"],
               ].map(([kind, href, label]) => (
-                <a key={label} href={href} target={kind !== "email" ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="lap-border inline-flex h-11 items-center justify-center gap-2 rounded-full border border-[#f5f1e8]/20 px-2 text-[9px] uppercase tracking-wider transition hover:text-[#c49a57]">
-                  <SocialIcon kind={kind as "github" | "linkedin" | "email"} />{label}
+                <a key={label} href={href} target={kind !== "email" ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="lap-border inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-[#f5f1e8]/20 px-2 text-[9px] uppercase tracking-wider transition hover:text-[#c49a57]">
+                  <SocialIcon kind={kind as "github" | "linkedin" | "email"} /><span className="hidden sm:inline">{label}</span>
                 </a>
               ))}
             </div>
