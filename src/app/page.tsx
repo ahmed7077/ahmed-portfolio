@@ -5,6 +5,8 @@ import { FeaturedProject, FieldNotes, GrowthMap } from "@/components/sections/St
 import { KnowledgeNetwork, Projects } from "@/components/sections/Expeditions";
 import { Contact, CredentialsAndFuture, Experience } from "@/components/sections/PathForward";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { IdentityStudio } from "@/components/sections/IdentityStudio";
+import { SystemsView } from "@/components/sections/SystemsView";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <SmoothScroll />
       <ExpeditionNav />
       <Hero />
+      <IdentityStudio />
+      <SystemsView />
       <FieldNotes />
       <GrowthMap />
       <FeaturedProject />

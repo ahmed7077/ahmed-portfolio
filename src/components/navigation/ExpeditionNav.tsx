@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const items = [["arrival", "Arrival"], ["notes", "Field notes"], ["growth", "Growth"], ["work", "Work"], ["network", "Network"], ["experience", "Experience"], ["contact", "Contact"]];
+const items = [["arrival", "Arrival"], ["identity", "Identity"], ["systems", "Systems"], ["notes", "Field notes"], ["growth", "Growth"], ["work", "Work"], ["network", "Network"], ["experience", "Experience"], ["contact", "Contact"]];
 
 export function ExpeditionNav() {
   const [active, setActive] = useState("arrival");
