@@ -3,6 +3,7 @@ import { ExpeditionNav } from "@/components/navigation/ExpeditionNav";
 import { Hero } from "@/components/sections/Hero";
 import { FeaturedProject, FieldNotes, GrowthMap } from "@/components/sections/Story";
 import { KnowledgeNetwork, Projects } from "@/components/sections/Expeditions";
+import { Contact, CredentialsAndFuture, Experience } from "@/components/sections/PathForward";
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
       <FeaturedProject />
       <Projects />
       <KnowledgeNetwork />
+      <Experience />
+      <CredentialsAndFuture />
+      <Contact />
     </main>
   );
 }
