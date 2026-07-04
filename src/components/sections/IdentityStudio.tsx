@@ -1,6 +1,20 @@
+"use client";
+
+import Image from "next/image";
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Container } from "@/components/layout/Container";
 
 export function IdentityStudio() {
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const lightX = useMotionValue(50);
+  const lightY = useMotionValue(50);
+  const rotateX = useSpring(useTransform(pointerY, [-.5, .5], [11, -11]), { stiffness: 170, damping: 20 });
+  const rotateY = useSpring(useTransform(pointerX, [-.5, .5], [-13, 13]), { stiffness: 170, damping: 20 });
+  const imageX = useSpring(useTransform(pointerX, [-.5, .5], [-18, 18]), { stiffness: 140, damping: 22 });
+  const imageY = useSpring(useTransform(pointerY, [-.5, .5], [-14, 14]), { stiffness: 140, damping: 22 });
+  const sheen = useMotionTemplate`radial-gradient(circle at ${lightX}% ${lightY}%, rgba(245,241,232,.32), rgba(196,154,87,.08) 24%, transparent 52%)`;
+
   return (
     <section id="identity" className="boundary-glow relative overflow-hidden bg-[#dcd0ba] py-24 md:py-36">
       <div className="flow-orbit absolute -right-40 top-0 h-[620px] w-[620px] rounded-full border border-[#1e3a34]/10" aria-hidden="true" />
@@ -20,19 +34,34 @@ export function IdentityStudio() {
                 </div>
               ))}
             </div>
+            <p className="mt-9 max-w-sm font-mono text-[9px] uppercase leading-5 tracking-[.14em] text-[#1e3a34]/42">Move across the portrait to shift perspective and light.</p>
           </div>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px]">
-            <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-[2.5rem] border border-[#1e3a34]/15" />
-            <div className="identity-frame relative flex h-full items-center justify-center overflow-hidden rounded-[2.5rem] bg-[#1e3a34] shadow-[0_35px_90px_rgba(30,58,52,.24)]">
-              <div className="relative grid h-56 w-56 place-items-center rounded-full border border-[#c49a57]/40 shadow-[0_0_70px_rgba(196,154,87,.12)]">
-                <div className="absolute inset-6 rounded-full border border-[#c49a57]/20" />
-                <span className="font-display text-6xl text-[#e7dcc8]">MA<span className="text-[#b86b4b]">.</span></span>
-              </div>
-              <div className="absolute inset-x-0 bottom-0 flex justify-between bg-gradient-to-t from-[#161815]/80 to-transparent p-7 pt-20 font-mono text-[9px] uppercase tracking-widest text-[#f5f1e8]/60">
+          <motion.div
+            onPointerMove={(event) => {
+              const rect = event.currentTarget.getBoundingClientRect();
+              const x = (event.clientX - rect.left) / rect.width;
+              const y = (event.clientY - rect.top) / rect.height;
+              pointerX.set(x - .5); pointerY.set(y - .5);
+              lightX.set(x * 100); lightY.set(y * 100);
+            }}
+            onPointerLeave={() => {
+              pointerX.set(0); pointerY.set(0); lightX.set(50); lightY.set(50);
+            }}
+            style={{ rotateX, rotateY, transformPerspective: 1100 }}
+            className="relative mx-auto aspect-[4/5] w-full max-w-[520px] [transform-style:preserve-3d]"
+          >
+            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-[2.5rem] border border-[#1e3a34]/20 [transform:translateZ(-35px)]" />
+            <div className="relative h-full overflow-hidden rounded-[2.5rem] bg-[#090b0a] shadow-[0_40px_100px_rgba(30,58,52,.3)] [transform-style:preserve-3d]">
+              <motion.div style={{ x: imageX, y: imageY, scale: 1.08 }} className="absolute inset-[-3%] [transform:translateZ(45px)]">
+                <Image src="/muhammad-ahmed-profile.jpg" alt="Portrait of Muhammad Ahmed" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
+              </motion.div>
+              <motion.div style={{ background: sheen }} className="pointer-events-none absolute inset-0 z-10 mix-blend-screen" />
+              <div className="pointer-events-none absolute inset-4 z-20 rounded-[1.8rem] border border-[#f5f1e8]/12" />
+              <div className="absolute inset-x-0 bottom-0 z-30 flex justify-between bg-gradient-to-t from-[#090b0a] via-[#090b0a]/55 to-transparent p-7 pt-24 font-mono text-[9px] uppercase tracking-widest text-[#f5f1e8]/70">
                 <span>Muhammad Ahmed</span><span>Portrait / 01</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

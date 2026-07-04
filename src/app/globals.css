@@ -11,6 +11,11 @@
   --sand: #e7dcc8;
   --dark: #161815;
 }
+@property --lap-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--paper); }
@@ -66,7 +71,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 .lap-border { position: relative; isolation: isolate; }
 .lap-border::before {
   content: ""; position: absolute; inset: -3px; z-index: 3; border-radius: inherit; opacity: 0; pointer-events: none;
-  background: conic-gradient(from 0deg, transparent 0 76%, #b86b4b 84%, #c49a57 91%, transparent 100%);
+  background: conic-gradient(from var(--lap-angle), transparent 0 76%, #b86b4b 84%, #c49a57 91%, transparent 100%);
   padding: 2px;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
@@ -86,8 +91,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 }
 .flow-orbit { animation: orbit-breathe 12s ease-in-out infinite alternate; }
 .boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
-.identity-frame { transition: transform .8s cubic-bezier(.22,1,.36,1), box-shadow .8s ease; transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
-.identity-frame:hover { transform: perspective(1000px) rotateY(2deg) rotateX(-1deg) translateY(-8px); box-shadow: 0 45px 110px rgba(30,58,52,.34), 0 0 55px rgba(196,154,87,.12); }
 .contour-field { transform-origin: center; animation: field-breathe 8s ease-in-out infinite alternate; }
 .contour-flow { stroke-dasharray: 18 12; animation: contour-drift 9s linear infinite; }
 .contour-flow-slow { animation-duration: 15s; }
@@ -102,7 +105,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 @keyframes orbit-breathe { to { transform: translate(-40px, 50px) scale(1.12); } }
 @keyframes contour-drift { to { stroke-dashoffset: -120; } }
 @keyframes field-breathe { to { transform: scale(1.025) translate3d(-.8%, .6%, 0); opacity: .72; } }
-@keyframes border-lap { to { transform: rotate(360deg); } }
+@keyframes border-lap { to { --lap-angle: 360deg; } }
 @keyframes ma-pulse { 0% { transform: scale(.62); opacity: 0; } 35% { opacity: .75; } 100% { transform: scale(1.45); opacity: 0; } }
 @keyframes orb-drift { to { transform: translate3d(38px, -28px, 0) scale(1.5); opacity: .28; } }
 @supports (animation-timeline: view()) {
