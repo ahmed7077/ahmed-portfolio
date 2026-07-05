@@ -1,9 +1,34 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial } from "@react-three/drei";
-import { useRef } from "react";
-import type { Mesh } from "three";
+import { Float, MeshDistortMaterial, PerspectiveCamera } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import { MathUtils } from "three";
+import type { Group, Mesh, PerspectiveCamera as ThreePerspectiveCamera } from "three";
+
+function ScrollCamera() {
+  const camera = useRef<ThreePerspectiveCamera>(null);
+  const progress = useRef(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const update = () => { progress.current = Math.min(window.scrollY / Math.max(window.innerHeight * 1.4, 1), 1); };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  useFrame((_, delta) => {
+    if (!camera.current) return;
+    const p = progress.current;
+    const ease = 1 - Math.exp(-delta * 4);
+    camera.current.position.x = MathUtils.lerp(camera.current.position.x, p * .75, ease);
+    camera.current.position.y = MathUtils.lerp(camera.current.position.y, 1.5 - p * .8, ease);
+    camera.current.position.z = MathUtils.lerp(camera.current.position.z, 5 - p * 1.15, ease);
+    camera.current.rotation.z = MathUtils.lerp(camera.current.rotation.z, p * -.025, ease);
+  });
+  return <PerspectiveCamera makeDefault ref={camera} position={[0, 1.5, 5]} fov={42} />;
+}
 
 function Terrain() {
   const mesh = useRef<Mesh>(null);
@@ -21,8 +46,13 @@ function Terrain() {
 }
 
 function Nodes() {
+  const group = useRef<Group>(null);
+  useFrame(({ clock }) => {
+    if (!group.current) return;
+    group.current.rotation.y = Math.sin(clock.elapsedTime * .12) * .06;
+  });
   return (
-    <group>
+    <group ref={group}>
       {[[-2.4, .3, 0], [1.8, .8, -.5], [.2, 1.5, -1], [3, -.2, -1.5]].map((position, i) => (
         <Float key={i} speed={.7 + i * .1} floatIntensity={.25}>
           <mesh position={position as [number, number, number]}>
@@ -37,11 +67,11 @@ function Nodes() {
 
 export default function TerrainScene() {
   return (
-    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 1.5, 5], fov: 42 }} gl={{ antialias: true, alpha: true }}>
+    <Canvas dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
       <fog attach="fog" args={["#1e3a34", 3.5, 10]} />
       <ambientLight intensity={1.5} />
       <directionalLight position={[2, 4, 5]} intensity={2} color="#e7dcc8" />
-      <Terrain /><Nodes />
+      <ScrollCamera /><Terrain /><Nodes />
     </Canvas>
   );
 }
