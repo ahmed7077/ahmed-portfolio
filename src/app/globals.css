@@ -68,15 +68,41 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
     radial-gradient(ellipse at 80% 70%, transparent 0 20%, rgba(184,107,75,.1) 20.2% 20.5%, transparent 21% 31%, rgba(184,107,75,.07) 31.2% 31.5%, transparent 32%);
 }
 .project-index { -webkit-text-stroke: 1px rgba(245,241,232,.28); color: transparent; }
-.lap-border { position: relative; isolation: isolate; }
-.lap-border::before {
+.lap-border, a.rounded-full:not(.ma-orbit), button.rounded-full { position: relative; isolation: isolate; }
+.lap-border::before, a.rounded-full:not(.ma-orbit)::before, button.rounded-full::before {
   content: ""; position: absolute; inset: -3px; z-index: 3; border-radius: inherit; opacity: 0; pointer-events: none;
   background: conic-gradient(from var(--lap-angle), transparent 0 76%, #b86b4b 84%, #c49a57 91%, transparent 100%);
   padding: 2px;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
-.lap-border:hover::before, .lap-border:focus-visible::before { opacity: 1; animation: border-lap .95s linear infinite; }
+.lap-border:hover::before, .lap-border:focus-visible::before,
+a.rounded-full:not(.ma-orbit):hover::before, a.rounded-full:not(.ma-orbit):focus-visible::before,
+button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
+  opacity: 1; animation: border-lap .95s linear infinite;
+}
+.expedition-cursor {
+  position: fixed; left: 0; top: 0; z-index: 120; width: 0; height: 0;
+  pointer-events: none; opacity: 0; transition: opacity .15s ease; will-change: transform;
+}
+.expedition-cursor[data-visible="true"] { opacity: 1; }
+.expedition-cursor__ring {
+  position: absolute; left: -11px; top: -11px; width: 22px; height: 22px; border: 1px solid rgba(196,154,87,.82); border-radius: 50%;
+  box-shadow: 0 0 12px rgba(196,154,87,.18);
+  transition: width .16s ease, height .16s ease, left .16s ease, top .16s ease, border-color .16s ease, transform .25s ease;
+}
+.expedition-cursor__ring::before, .expedition-cursor__ring::after {
+  content: ""; position: absolute; left: 50%; top: 50%; background: #c49a57; transform: translate(-50%, -50%);
+}
+.expedition-cursor__ring::before { width: 30px; height: 1px; }
+.expedition-cursor__ring::after { width: 1px; height: 30px; }
+.expedition-cursor__point {
+  position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: #b86b4b;
+  box-shadow: 0 0 8px rgba(184,107,75,.8);
+}
+.expedition-cursor[data-active="true"] .expedition-cursor__ring {
+  left: -18px; top: -18px; width: 36px; height: 36px; border-color: #b86b4b; transform: rotate(45deg);
+}
 .ma-orbit { position: relative; border: 1px solid rgba(196,154,87,.42); box-shadow: 0 0 24px rgba(196,154,87,.1); }
 .ma-orbit::before, .ma-orbit::after {
   content: ""; position: absolute; inset: -1px; z-index: 2; border-radius: 50%; border: 1px solid rgba(196,154,87,.5); pointer-events: none;
@@ -115,5 +141,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@media (pointer: fine) {
+  body, a, button { cursor: none; }
+}
+@media (pointer: coarse) {
+  .expedition-cursor { display: none; }
 }
 @media (max-width: 767px) { .section-shell { width: min(100% - 28px, 1180px); } }

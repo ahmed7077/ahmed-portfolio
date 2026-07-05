@@ -9,12 +9,14 @@ import { IdentityStudio } from "@/components/sections/IdentityStudio";
 import { SystemsView } from "@/components/sections/SystemsView";
 import { ScrollExperience } from "@/components/background/ScrollExperience";
 import { FlowInterlude } from "@/components/sections/FlowInterlude";
+import { ExpeditionCursor } from "@/components/ui/ExpeditionCursor";
 
 export default function Home() {
   return (
     <main>
       <PaperGrain />
       <ScrollExperience />
+      <ExpeditionCursor />
       <SmoothScroll />
       <ExpeditionNav />
       <Hero />

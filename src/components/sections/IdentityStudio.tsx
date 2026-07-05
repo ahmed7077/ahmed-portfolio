@@ -1,19 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Container } from "@/components/layout/Container";
 
 export function IdentityStudio() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const lightX = useMotionValue(50);
-  const lightY = useMotionValue(50);
   const rotateX = useSpring(useTransform(pointerY, [-.5, .5], [7, -7]), { stiffness: 170, damping: 20 });
   const rotateY = useSpring(useTransform(pointerX, [-.5, .5], [-8, 8]), { stiffness: 170, damping: 20 });
   const imageX = useSpring(useTransform(pointerX, [-.5, .5], [-14, 14]), { stiffness: 140, damping: 22 });
   const imageY = useSpring(useTransform(pointerY, [-.5, .5], [-11, 11]), { stiffness: 140, damping: 22 });
-  const sheen = useMotionTemplate`radial-gradient(circle at ${lightX}% ${lightY}%, rgba(245,241,232,.32), rgba(196,154,87,.08) 24%, transparent 52%)`;
 
   return (
     <section id="identity" className="boundary-glow relative overflow-hidden bg-[#dcd0ba] py-24 md:py-36">
@@ -42,10 +39,9 @@ export function IdentityStudio() {
               const x = (event.clientX - rect.left) / rect.width;
               const y = (event.clientY - rect.top) / rect.height;
               pointerX.set(x - .5); pointerY.set(y - .5);
-              lightX.set(x * 100); lightY.set(y * 100);
             }}
             onPointerLeave={() => {
-              pointerX.set(0); pointerY.set(0); lightX.set(50); lightY.set(50);
+              pointerX.set(0); pointerY.set(0);
             }}
             style={{ rotateX, rotateY, transformPerspective: 1500 }}
             className="relative isolate mx-auto aspect-[4/5] w-full max-w-[520px] [backface-visibility:hidden]"
@@ -55,7 +51,6 @@ export function IdentityStudio() {
               <motion.div style={{ x: imageX, y: imageY, scale: 1.08 }} className="absolute inset-[-3%]">
                 <Image src="/muhammad-ahmed-profile.jpg" alt="Portrait of Muhammad Ahmed" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
               </motion.div>
-              <motion.div style={{ background: sheen }} className="pointer-events-none absolute inset-0 z-10 mix-blend-screen" />
               <div className="pointer-events-none absolute inset-4 z-20 rounded-[1.8rem] border border-[#f5f1e8]/12" />
               <div className="absolute inset-x-0 bottom-0 z-30 flex justify-between bg-gradient-to-t from-[#090b0a] via-[#090b0a]/55 to-transparent p-7 pt-24 font-mono text-[9px] uppercase tracking-widest text-[#f5f1e8]/70">
                 <span>Muhammad Ahmed</span><span>Portrait / 01</span>
