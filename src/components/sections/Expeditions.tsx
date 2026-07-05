@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Orbit } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,31 +15,56 @@ const tones = {
   roots: "from-[#254238] to-[#141a17]",
 };
 
+function ProjectArtifact({ project, index }: { project: (typeof projects)[number]; index: number }) {
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const rotateX = useSpring(useTransform(py, [-.5, .5], [2.8, -2.8]), { stiffness: 190, damping: 24 });
+  const rotateY = useSpring(useTransform(px, [-.5, .5], [-3.4, 3.4]), { stiffness: 190, damping: 24 });
+  const farX = useSpring(useTransform(px, [-.5, .5], [-13, 13]), { stiffness: 150, damping: 25 });
+  const nearX = useSpring(useTransform(px, [-.5, .5], [8, -8]), { stiffness: 170, damping: 23 });
+  const nearY = useSpring(useTransform(py, [-.5, .5], [7, -7]), { stiffness: 170, damping: 23 });
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onPointerMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        px.set((event.clientX - rect.left) / rect.width - .5);
+        py.set((event.clientY - rect.top) / rect.height - .5);
+      }}
+      onPointerLeave={() => { px.set(0); py.set(0); }}
+      style={{ rotateX, rotateY, transformPerspective: 1400 }}
+      className={`depth-card group relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${tones[project.tone]} text-[#f5f1e8]`}
+    >
+      <motion.div style={{ x: farX }} className="pointer-events-none absolute -inset-16 opacity-20 [background:radial-gradient(circle_at_center,rgba(196,154,87,.4),transparent_55%)]" />
+      <motion.div style={{ x: nearX, y: nearY }} className="absolute right-5 top-0 font-display text-[8rem] leading-none opacity-40 project-index md:text-[13rem]">0{index + 1}</motion.div>
+      <div className="relative grid min-h-[370px] gap-10 p-7 md:grid-cols-[.7fr_1.3fr] md:p-12">
+        <motion.div style={{ x: farX }} className="flex flex-col justify-between">
+          <p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#c49a57]">{project.label}</p>
+          <Orbit className="hidden text-[#f5f1e8]/20 md:block" size={90} strokeWidth={.6} />
+        </motion.div>
+        <motion.div style={{ x: nearX, y: nearY }} className="self-end">
+          <h3 className="font-display text-4xl leading-none md:text-6xl">{project.title}</h3>
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-[#f5f1e8]/62">{project.description}</p>
+          <div className="mt-7 flex flex-wrap items-center gap-2">
+            {project.tech.map((tech) => <span key={tech} className="rounded-full border border-[#f5f1e8]/15 px-3 py-1 font-mono text-[9px]">{tech}</span>)}
+            <a href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`} className="ml-auto grid h-12 w-12 place-items-center rounded-full bg-[#f5f1e8] text-[#161815] transition group-hover:rotate-12 group-hover:scale-110"><ArrowUpRight size={18} /></a>
+          </div>
+        </motion.div>
+      </div>
+    </motion.article>
+  );
+}
+
 export function Projects() {
   return (
     <section className="py-24 md:py-36">
       <Container>
         <SectionHeading index="04" title="Research expeditions" note="Engineering artifacts shaped by constraints: limited compute, imperfect data, and real environments." />
         <div className="space-y-5">
-          {projects.map((project, index) => (
-            <motion.article key={project.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`depth-card group relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${tones[project.tone]} text-[#f5f1e8]`}>
-              <div className="absolute right-5 top-0 font-display text-[8rem] leading-none opacity-40 project-index md:text-[13rem]">0{index + 1}</div>
-              <div className="relative grid min-h-[370px] gap-10 p-7 md:grid-cols-[.7fr_1.3fr] md:p-12">
-                <div className="flex flex-col justify-between">
-                  <p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#c49a57]">{project.label}</p>
-                  <Orbit className="hidden text-[#f5f1e8]/20 md:block" size={90} strokeWidth={.6} />
-                </div>
-                <div className="self-end">
-                  <h3 className="font-display text-4xl leading-none md:text-6xl">{project.title}</h3>
-                  <p className="mt-6 max-w-2xl text-sm leading-7 text-[#f5f1e8]/62">{project.description}</p>
-                  <div className="mt-7 flex flex-wrap items-center gap-2">
-                    {project.tech.map((tech) => <span key={tech} className="rounded-full border border-[#f5f1e8]/15 px-3 py-1 font-mono text-[9px]">{tech}</span>)}
-                    <a href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`} className="ml-auto grid h-12 w-12 place-items-center rounded-full bg-[#f5f1e8] text-[#161815] transition group-hover:rotate-12 group-hover:scale-110"><ArrowUpRight size={18} /></a>
-                  </div>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+          {projects.map((project, index) => <ProjectArtifact key={project.title} project={project} index={index} />)}
         </div>
       </Container>
     </section>
