@@ -11,11 +11,13 @@ import { ScrollExperience } from "@/components/background/ScrollExperience";
 import { FlowInterlude } from "@/components/sections/FlowInterlude";
 import { ExpeditionCursor } from "@/components/ui/ExpeditionCursor";
 import { FogTransition } from "@/components/background/FogTransition";
+import { TopographicDistortion } from "@/components/background/TopographicDistortion";
 
 export default function Home() {
   return (
     <main>
       <PaperGrain />
+      <TopographicDistortion />
       <ScrollExperience />
       <ExpeditionCursor />
       <SmoothScroll />
