@@ -46,6 +46,7 @@ export function IdentityStudio() {
             style={{ rotateX, rotateY, transformPerspective: 1500 }}
             className="relative isolate mx-auto aspect-[4/5] w-full max-w-[520px] [backface-visibility:hidden]"
           >
+            <div className="portrait-reflection" aria-hidden="true" />
             <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-[2.5rem] border border-[#1e3a34]/20" />
             <div className="relative h-full overflow-hidden rounded-[2.5rem] bg-[#090b0a] shadow-[0_40px_100px_rgba(30,58,52,.3)] [backface-visibility:hidden]">
               <motion.div style={{ x: imageX, y: imageY, scale: 1.08 }} className="absolute inset-[-3%]">

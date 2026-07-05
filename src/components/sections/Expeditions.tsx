@@ -27,6 +27,7 @@ function ProjectArtifact({ project, index }: { project: (typeof projects)[number
   const nearY = useSpring(useTransform(py, [-.5, .5], [7, -7]), { stiffness: 170, damping: 23 });
 
   return (
+    <div className="reflection-stage">
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -57,6 +58,8 @@ function ProjectArtifact({ project, index }: { project: (typeof projects)[number
         </motion.div>
       </div>
     </motion.article>
+    <span className="reflection-stage__mirror" aria-hidden="true" />
+    </div>
   );
 }
 
