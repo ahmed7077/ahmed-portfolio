@@ -115,6 +115,19 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
   box-shadow: 0 0 36px rgba(196,154,87,.38);
   animation: orb-drift 7s ease-in-out infinite alternate;
 }
+.fog-transition {
+  position: relative; z-index: 8; height: 0; pointer-events: none;
+  --fog-a: rgba(245,241,232,.78); --fog-b: rgba(231,220,200,.38);
+}
+.fog-transition--dark { --fog-a: rgba(30,58,52,.7); --fog-b: rgba(22,24,21,.42); }
+.fog-transition__volume {
+  position: absolute; left: 50%; top: 0; width: min(1150px, 115vw); height: 190px;
+  border-radius: 50%; filter: blur(34px); opacity: .6; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, var(--fog-a), var(--fog-b) 42%, transparent 72%);
+  animation: fog-drift 11s ease-in-out infinite alternate;
+}
+.fog-transition__volume--two { left: 32%; width: 62vw; height: 145px; opacity: .38; animation-delay: -4s; animation-duration: 14s; }
+.fog-transition__volume--three { left: 72%; width: 48vw; height: 120px; opacity: .32; animation-delay: -8s; animation-duration: 17s; }
 .flow-orbit { animation: orbit-breathe 12s ease-in-out infinite alternate; }
 .boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
 .contour-field { transform-origin: center; animation: field-breathe 8s ease-in-out infinite alternate; }
@@ -134,6 +147,7 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes border-lap { to { --lap-angle: 360deg; } }
 @keyframes ma-pulse { 0% { transform: scale(.62); opacity: 0; } 35% { opacity: .75; } 100% { transform: scale(1.45); opacity: 0; } }
 @keyframes orb-drift { to { transform: translate3d(38px, -28px, 0) scale(1.5); opacity: .28; } }
+@keyframes fog-drift { to { transform: translate(-46%, -46%) scale(1.08); opacity: .42; } }
 @supports (animation-timeline: view()) {
   .section-title { animation: title-settle linear both; animation-timeline: view(); animation-range: entry 5% cover 35%; }
   @keyframes title-settle { from { opacity: .2; transform: translateY(35px); letter-spacing: -.01em; } }

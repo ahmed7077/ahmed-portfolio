@@ -10,6 +10,7 @@ import { SystemsView } from "@/components/sections/SystemsView";
 import { ScrollExperience } from "@/components/background/ScrollExperience";
 import { FlowInterlude } from "@/components/sections/FlowInterlude";
 import { ExpeditionCursor } from "@/components/ui/ExpeditionCursor";
+import { FogTransition } from "@/components/background/FogTransition";
 
 export default function Home() {
   return (
@@ -21,15 +22,19 @@ export default function Home() {
       <ExpeditionNav />
       <Hero />
       <IdentityStudio />
+      <FogTransition dark />
       <SystemsView />
       <FieldNotes />
       <GrowthMap />
+      <FogTransition dark />
       <FlowInterlude />
       <FeaturedProject />
       <Projects />
       <KnowledgeNetwork />
+      <FogTransition />
       <Experience />
       <CredentialsAndFuture />
+      <FogTransition dark />
       <Contact />
     </main>
   );
