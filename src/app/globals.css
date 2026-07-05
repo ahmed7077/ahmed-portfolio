@@ -51,6 +51,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
   opacity: .085; mix-blend-mode: multiply;
 }
 .topographic-distortion path { stroke: #7b9278; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.depth-wipe { position: fixed; inset: 0; z-index: 110; pointer-events: none; visibility: hidden; }
+.depth-wipe__layer { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; }
+.depth-wipe__layer--one { background: #b86b4b; }
+.depth-wipe__layer--two { background: #c49a57; transition-delay: .06s !important; }
+.depth-wipe__layer--three { background: #1e3a34; transition-delay: .12s !important; }
+.depth-wipe__coordinate {
+  position: absolute; left: 50%; top: 50%; z-index: 2; transform: translate(-50%, -50%);
+  color: #f5f1e8; font: 500 9px/1 var(--font-mono); letter-spacing: .2em; text-transform: uppercase; opacity: 0;
+}
+.depth-wipe[data-state="enter"], .depth-wipe[data-state="exit"] { visibility: visible; }
+.depth-wipe[data-state="enter"] .depth-wipe__layer { transform: scaleX(1); transition: transform .34s cubic-bezier(.76,0,.24,1); }
+.depth-wipe[data-state="enter"] .depth-wipe__coordinate { opacity: 1; transition: opacity .18s ease .18s; }
+.depth-wipe[data-state="exit"] .depth-wipe__layer { transform: scaleX(0); transform-origin: right; transition: transform .46s cubic-bezier(.76,0,.24,1); }
+.depth-wipe[data-state="exit"] .depth-wipe__coordinate { opacity: 0; }
 .section-shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
 .eyebrow {
   display: flex; align-items: center; gap: .7rem; color: var(--terra);

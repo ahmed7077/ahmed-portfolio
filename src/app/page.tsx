@@ -12,6 +12,7 @@ import { FlowInterlude } from "@/components/sections/FlowInterlude";
 import { ExpeditionCursor } from "@/components/ui/ExpeditionCursor";
 import { FogTransition } from "@/components/background/FogTransition";
 import { TopographicDistortion } from "@/components/background/TopographicDistortion";
+import { DepthWipe } from "@/components/navigation/DepthWipe";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <TopographicDistortion />
       <ScrollExperience />
       <ExpeditionCursor />
+      <DepthWipe />
       <SmoothScroll />
       <ExpeditionNav />
       <Hero />
