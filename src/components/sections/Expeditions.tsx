@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Orbit } from "lucide-react";
 import { Container } from "@/components/layout/Container";
@@ -14,6 +15,7 @@ const tones = {
   vision: "from-[#4b2926] to-[#1f1b1a]",
   roots: "from-[#254238] to-[#141a17]",
 };
+const SkillConstellation = dynamic(() => import("@/components/three/SkillConstellation"), { ssr: false });
 
 function ProjectArtifact({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const px = useMotionValue(0);
@@ -73,6 +75,7 @@ export function Projects() {
 
 export function KnowledgeNetwork() {
   const [active, setActive] = useState("AI / ML");
+  const activeIndex = Object.keys(skills).indexOf(active);
   return (
     <section id="network" className="topo border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
       <Container>
@@ -86,7 +89,8 @@ export function KnowledgeNetwork() {
             ))}
           </div>
           <div className="relative min-h-[390px] overflow-hidden rounded-[2rem] bg-[#1e3a34] p-7 text-[#f5f1e8] md:p-12">
-            <svg className="absolute inset-0 h-full w-full opacity-20" aria-hidden="true"><path d="M0 330 Q240 30 520 230 T1000 80" fill="none" stroke="#C49A57" strokeDasharray="4 8" /></svg>
+            <div className="pointer-events-none absolute inset-0 opacity-80" aria-hidden="true"><SkillConstellation activeSeed={activeIndex} /></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a34]/90 via-[#1e3a34]/35 to-transparent" />
             <p className="relative font-mono text-[10px] uppercase tracking-[.2em] text-[#c49a57]">Active cluster / {active}</p>
             <div className="relative mt-14 flex flex-wrap gap-3">
               {skills[active as keyof typeof skills].map((skill, index) => (
