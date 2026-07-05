@@ -48,9 +48,27 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 }
 .topographic-distortion {
   position: fixed; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none;
-  opacity: .085; mix-blend-mode: multiply;
+  opacity: .14; mix-blend-mode: soft-light;
 }
-.topographic-distortion path { stroke: #7b9278; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.topographic-distortion path { stroke: #c49a57; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.topographic-flow-line {
+  stroke-dasharray: 20 14;
+  transform-box: fill-box; transform-origin: center;
+  animation: global-topo-flow 11s linear infinite, global-topo-wave 5.5s ease-in-out infinite alternate;
+}
+.topographic-flow-line:nth-child(even) { animation-duration: 14s, 7s; animation-direction: reverse, alternate-reverse; }
+.chapter-arrival {
+  position: fixed; left: 50%; top: clamp(76px, 10vh, 108px); z-index: 70;
+  display: grid; justify-items: center; gap: 5px; pointer-events: none;
+  color: #f5f1e8; text-align: center; text-shadow: 0 2px 16px rgba(22,24,21,.55);
+  animation: chapter-arrival 2.4s cubic-bezier(.22,1,.36,1) both;
+}
+.chapter-arrival::before {
+  content: ""; position: absolute; inset: -14px -30px; z-index: -1; border-radius: 999px;
+  background: rgba(22,24,21,.72); border: 1px solid rgba(196,154,87,.28); backdrop-filter: blur(12px);
+}
+.chapter-arrival span { font: 500 8px/1 var(--font-mono); letter-spacing: .2em; text-transform: uppercase; color: #c49a57; }
+.chapter-arrival strong { font: 500 22px/1 var(--font-display); }
 .depth-wipe { position: fixed; inset: 0; z-index: 110; pointer-events: none; visibility: hidden; }
 .depth-wipe__layer { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; }
 .depth-wipe__layer--one { background: #b86b4b; }
@@ -187,6 +205,13 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes ma-pulse { 0% { transform: scale(.62); opacity: 0; } 35% { opacity: .75; } 100% { transform: scale(1.45); opacity: 0; } }
 @keyframes orb-drift { to { transform: translate3d(38px, -28px, 0) scale(1.5); opacity: .28; } }
 @keyframes fog-drift { to { transform: translate(-46%, -46%) scale(1.08); opacity: .42; } }
+@keyframes global-topo-flow { to { stroke-dashoffset: -170; } }
+@keyframes global-topo-wave { to { transform: translate3d(0, 9px, 0) scaleY(1.025); } }
+@keyframes chapter-arrival {
+  0% { opacity: 0; transform: translate(-50%, -14px) scale(.94); }
+  16%, 68% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, 8px) scale(.98); visibility: hidden; }
+}
 @supports (animation-timeline: view()) {
   .section-title { animation: title-settle linear both; animation-timeline: view(); animation-range: entry 5% cover 35%; }
   @keyframes title-settle { from { opacity: .2; transform: translateY(35px); letter-spacing: -.01em; } }

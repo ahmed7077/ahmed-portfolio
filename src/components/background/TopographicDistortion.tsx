@@ -42,7 +42,7 @@ export function TopographicDistortion() {
       </defs>
       <g ref={fieldRef} filter="url(#topographic-warp)" fill="none">
         {Array.from({ length: 8 }).map((_, index) => (
-          <path key={index} d={`M-120 ${130 + index * 92} C180 ${40 + index * 78}, 390 ${260 + index * 54}, 690 ${120 + index * 90} S1130 ${250 + index * 42}, 1560 ${80 + index * 92}`} />
+          <path className="topographic-flow-line" style={{ animationDelay: `${index * -.85}s` }} key={index} d={`M-120 ${130 + index * 92} C180 ${40 + index * 78}, 390 ${260 + index * 54}, 690 ${120 + index * 90} S1130 ${250 + index * 42}, 1560 ${80 + index * 92}`} />
         ))}
       </g>
     </svg>
