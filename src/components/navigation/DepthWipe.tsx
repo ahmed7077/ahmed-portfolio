@@ -8,6 +8,7 @@ export function DepthWipe() {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let revealTimer = 0;
+    let holdTimer = 0;
     let finishTimer = 0;
     const navigate = (event: MouseEvent) => {
       if (reduced.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -15,22 +16,27 @@ export function DepthWipe() {
       const id = link?.getAttribute("href")?.slice(1);
       const target = id ? document.getElementById(id) : null;
       const wipe = wipeRef.current;
-      if (!link || !target || !wipe || wipe.dataset.state === "enter") return;
+      if (!link || !target || !wipe || wipe.dataset.state !== "idle") return;
       event.preventDefault();
       wipe.dataset.state = "enter";
       window.clearTimeout(revealTimer);
+      window.clearTimeout(holdTimer);
       window.clearTimeout(finishTimer);
       revealTimer = window.setTimeout(() => {
         target.scrollIntoView({ behavior: "instant", block: "start" });
         window.history.pushState(null, "", `#${id}`);
-        wipe.dataset.state = "exit";
+        wipe.dataset.state = "hold";
       }, 360);
-      finishTimer = window.setTimeout(() => { wipe.dataset.state = "idle"; }, 920);
+      holdTimer = window.setTimeout(() => {
+        wipe.dataset.state = "exit";
+      }, 1360);
+      finishTimer = window.setTimeout(() => { wipe.dataset.state = "idle"; }, 1920);
     };
     document.addEventListener("click", navigate);
     return () => {
       document.removeEventListener("click", navigate);
       window.clearTimeout(revealTimer);
+      window.clearTimeout(holdTimer);
       window.clearTimeout(finishTimer);
     };
   }, []);
