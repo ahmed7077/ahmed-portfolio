@@ -74,10 +74,26 @@ export function FeaturedProject() {
             <div className="space-y-3">
               {flow.map((item, index) => (
                 <div key={item}>
-                  <motion.div initial={{ opacity: .35, x: -15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * .18 }} className={`flex min-h-20 items-center justify-between rounded-xl border px-5 ${index === 2 ? "border-[#b86b4b]/60 bg-[#b86b4b]/10" : "border-[#f5f1e8]/12 bg-[#f5f1e8]/[.03]"}`}>
-                    <span className="font-display text-lg">{item}</span><span className="font-mono text-[9px] text-[#c49a57]">0{index + 1}</span>
+                  <motion.div
+                    initial={{ opacity: .35, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ x: 6, borderColor: "rgba(196,154,87,.65)" }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * .18, duration: .55 }}
+                    className={`group/node relative flex min-h-20 items-center justify-between overflow-hidden rounded-xl border px-5 ${index === 2 ? "border-[#b86b4b]/60 bg-[#b86b4b]/10" : "border-[#f5f1e8]/12 bg-[#f5f1e8]/[.03]"}`}
+                  >
+                    <motion.span className="absolute left-0 top-0 h-full w-1 bg-[#c49a57]" initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ delay: .25 + index * .2, duration: .45 }} />
+                    <span className="font-display text-lg">{item}</span>
+                    <span className="flex items-center gap-3">
+                      <motion.span className="h-2 w-2 rounded-full bg-[#c49a57]" animate={{ scale: [1, 1.8, 1], opacity: [.45, 1, .45] }} transition={{ duration: 2.2, delay: index * .35, repeat: Infinity }} />
+                      <span className="font-mono text-[9px] text-[#c49a57]">0{index + 1}</span>
+                    </span>
                   </motion.div>
-                  {index < flow.length - 1 && <div className="ml-8 h-5 w-px bg-gradient-to-b from-[#c49a57] to-transparent" />}
+                  {index < flow.length - 1 && (
+                    <div className="relative ml-8 h-5 w-px overflow-visible bg-[#c49a57]/20">
+                      <motion.span className="absolute -left-[2px] top-0 h-[5px] w-[5px] rounded-full bg-[#c49a57] shadow-[0_0_10px_#c49a57]" animate={{ y: [0, 17, 0], opacity: [0, 1, 0] }} transition={{ duration: 1.35, delay: index * .3, repeat: Infinity, ease: "easeInOut" }} />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
