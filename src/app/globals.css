@@ -271,7 +271,7 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes field-route-flow { to { stroke-dashoffset: -256; } }
 @keyframes field-ring-breathe { to { transform: translate3d(-18px, 12px, 0) scale(1.07); opacity: .65; } }
 @keyframes field-ring-spin { to { transform: rotate(360deg); } }
-@keyframes field-ring-unified { to { transform: translate3d(-22px,14px,0) scale(1.075) rotate(7deg); opacity: .78; } }
+@keyframes field-ring-unified { to { transform: translate3d(-22px,14px,0) scale(1.075) rotate(7deg); } }
 @keyframes growth-ring-drift { to { transform: translate3d(-30px,22px,0) scale(1.1) rotate(10deg); opacity: .72; } }
 @keyframes future-route-flow { to { stroke-dashoffset: -232; } }
 @keyframes future-orbit-drift { to { transform: translate3d(-32px,22px,0) scale(1.08) rotate(9deg); } }
