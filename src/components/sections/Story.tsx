@@ -54,7 +54,7 @@ export function GrowthMap() {
           <div className="absolute left-[15px] top-0 h-full w-px bg-[#1e3a34]/20 md:left-0 md:top-[15px] md:h-px md:w-full" />
           {journey.map(([id, label, tech], index) => (
             <motion.article key={id} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: index * .08 }} className="group relative grid grid-cols-[32px_1fr] gap-5 pb-10 md:block md:pr-8 md:pb-14">
-              <span className={`relative z-10 block h-[31px] w-[31px] rounded-full border-4 border-[#eee5d4] transition group-hover:scale-125 ${index === journey.length - 1 ? "bg-[#b86b4b]" : "bg-[#1e3a34]"}`} />
+              <span className="relative z-10 block h-[31px] w-[31px] rounded-full border-4 border-[#eee5d4] bg-[#1e3a34] transition group-hover:scale-125" />
               <div className="md:mt-7"><p className="font-mono text-[10px] text-[#b86b4b]">{id} / {label}</p><h3 className="mt-2 font-display text-xl">{tech}</h3></div>
             </motion.article>
           ))}
