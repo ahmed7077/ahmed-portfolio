@@ -221,6 +221,10 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 .growth-map-rings span:nth-child(1) { width: 430px; height: 430px; right: -8%; top: -24%; }
 .growth-map-rings span:nth-child(2) { width: 260px; height: 260px; left: 18%; bottom: -31%; animation-delay: -4s; animation-duration: 14s; }
 .growth-map-rings span:nth-child(3) { width: 180px; height: 180px; right: 34%; top: 24%; animation-delay: -8s; animation-duration: 9s; }
+.knowledge-network-rings { transform: rotate(180deg); opacity: .85; }
+.knowledge-network-rings span:nth-child(1) { width: 520px; height: 520px; right: -12%; top: -42%; }
+.knowledge-network-rings span:nth-child(2) { width: 310px; height: 310px; left: 7%; bottom: -38%; }
+.knowledge-network-rings span:nth-child(3) { width: 210px; height: 210px; right: 48%; top: 7%; }
 .flow-interlude-lines svg { transform-origin: center; animation: flow-lines-breathe 8s ease-in-out infinite alternate; }
 .flow-interlude-lines path { stroke-dasharray: 28 14; animation: flow-line-travel 16s linear infinite; }
 .flow-interlude-lines path:nth-child(even) { animation-direction: reverse; animation-duration: 21s; }
