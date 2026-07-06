@@ -72,7 +72,12 @@ export function FeaturedProject() {
         <p className="eyebrow mb-8">03 / Featured expedition</p>
         <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr]">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#c49a57]">IonIdea internship context · 2025</p>
+            <p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#c49a57]">
+              <a href="https://www.ionidea.com/" target="_blank" rel="noreferrer" className="lap-border inline-flex rounded-full border border-[#c49a57]/45 bg-[#c49a57]/10 px-4 py-2 transition hover:bg-[#c49a57]/20">
+                IonIdea internship ↗
+              </a>
+              <span className="ml-3 text-[#f5f1e8]/40">2025</span>
+            </p>
             <h2 className="section-title mt-6">Efficient LLM<br /><em className="font-light text-[#c49a57]">Adaptation</em></h2>
             <p className="mt-8 max-w-lg text-base leading-7 text-[#f5f1e8]/65">Parameter-efficient fine-tuning of Meta Llama 3.2-3B-Instruct using LoRA on a custom instruction-response dataset, paired with a lightweight retrieval layer for deterministic knowledge lookup.</p>
             <div className="mt-8 flex flex-wrap gap-2">{["Llama 3.2", "LoRA", "PEFT", "TRL", "Transformers", "Prompt engineering"].map((item) => <span key={item} className="rounded-full border border-[#f5f1e8]/15 px-3 py-1.5 font-mono text-[10px] text-[#e7dcc8]">{item}</span>)}</div>
