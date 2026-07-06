@@ -27,10 +27,10 @@ export function IdentityStudio() {
     >
       <motion.div
         style={{ x: backgroundX, y: backgroundY, scale: 1.06 }}
-        className="identity-topography pointer-events-none absolute inset-[-3%]"
+        className="identity-topography pointer-events-none absolute inset-[-3%] opacity-100"
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[#e7dcc8]/58 backdrop-saturate-[.82]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-[#f5f1e8]/22" aria-hidden="true" />
       <div className="flow-orbit absolute -right-40 top-0 h-[620px] w-[620px] rounded-full border border-[#1e3a34]/10" aria-hidden="true" />
       <Container className="relative z-10">
         <div className="grid items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
