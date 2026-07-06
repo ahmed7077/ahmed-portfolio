@@ -177,6 +177,16 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 }
 .field-notes-ring--large { right: -10rem; top: 4rem; width: 34rem; height: 34rem; }
 .field-notes-ring--small { left: 7%; bottom: -8rem; width: 19rem; height: 19rem; animation-delay: -4s; }
+.flow-interlude-lines svg { transform-origin: center; animation: flow-lines-breathe 8s ease-in-out infinite alternate; }
+.flow-interlude-lines path { stroke-dasharray: 28 14; animation: flow-line-travel 16s linear infinite; }
+.flow-interlude-lines path:nth-child(even) { animation-direction: reverse; animation-duration: 21s; }
+.flow-interlude-rings { animation: interlude-ring-breathe 9s ease-in-out infinite alternate; }
+.flow-interlude-rings > div:first-child { animation: field-ring-spin 32s linear infinite; }
+.flowing-word {
+  display: inline-block; transform-origin: 50% 70%;
+  animation: flowing-word-wave 3.6s ease-in-out infinite;
+  text-shadow: 0 8px 24px rgba(196,154,87,.18);
+}
 .boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
 .contour-field { transform-origin: center; animation: field-breathe 8s ease-in-out infinite alternate; }
 .contour-flow { stroke-dasharray: 18 12; animation: contour-drift 9s linear infinite; }
@@ -213,6 +223,14 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes field-route-flow { to { stroke-dashoffset: -256; } }
 @keyframes field-ring-breathe { to { transform: translate3d(-18px, 12px, 0) scale(1.07); opacity: .65; } }
 @keyframes field-ring-spin { to { transform: rotate(360deg); } }
+@keyframes flow-lines-breathe { to { transform: scale(1.025) translateY(8px); opacity: .72; } }
+@keyframes flow-line-travel { to { stroke-dashoffset: -252; } }
+@keyframes interlude-ring-breathe { to { transform: translate3d(22px,-16px,0) scale(1.08); opacity: .7; } }
+@keyframes flowing-word-wave {
+  0%, 100% { transform: translateY(0) rotate(-.5deg) skewX(0); }
+  35% { transform: translateY(-7px) rotate(.8deg) skewX(-2deg); }
+  70% { transform: translateY(3px) rotate(-.3deg) skewX(1.5deg); }
+}
 @keyframes contour-drift { to { stroke-dashoffset: -120; } }
 @keyframes field-breathe { to { transform: scale(1.025) translate3d(-.8%, .6%, 0); opacity: .72; } }
 @keyframes border-lap { to { --lap-angle: 360deg; } }
