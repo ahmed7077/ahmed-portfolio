@@ -200,9 +200,13 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 .flow-interlude-rings { animation: interlude-ring-breathe 9s ease-in-out infinite alternate; }
 .flow-interlude-rings > div:first-child { animation: field-ring-spin 32s linear infinite; }
 .flowing-word {
-  display: inline-block; transform-origin: 50% 70%;
-  animation: flowing-word-wave 3.6s ease-in-out infinite;
+  display: inline-flex;
   text-shadow: 0 8px 24px rgba(196,154,87,.18);
+}
+.flowing-word > span {
+  display: inline-block;
+  transform-origin: 50% 75%;
+  animation: flowing-letter-wave 1.7s ease-in-out infinite;
 }
 .boundary-glow { box-shadow: inset 0 28px 70px -55px rgba(196,154,87,.8), inset 0 -28px 70px -55px rgba(30,58,52,.8); }
 .contour-field { transform-origin: center; animation: field-breathe 8s ease-in-out infinite alternate; }
@@ -279,10 +283,10 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes flow-lines-breathe { to { transform: scale(1.025) translateY(8px); opacity: .72; } }
 @keyframes flow-line-travel { to { stroke-dashoffset: -252; } }
 @keyframes interlude-ring-breathe { to { transform: translate3d(22px,-16px,0) scale(1.08); opacity: .7; } }
-@keyframes flowing-word-wave {
-  0%, 100% { transform: translateY(0) rotate(-.5deg) skewX(0); }
-  35% { transform: translateY(-7px) rotate(.8deg) skewX(-2deg); }
-  70% { transform: translateY(3px) rotate(-.3deg) skewX(1.5deg); }
+@keyframes flowing-letter-wave {
+  0%, 100% { transform: translateY(0) rotate(0) scaleY(1); }
+  30% { transform: translateY(-12px) rotate(-3deg) scaleY(1.06); }
+  60% { transform: translateY(5px) rotate(2deg) scaleY(.98); }
 }
 @keyframes contour-drift { to { stroke-dashoffset: -120; } }
 @keyframes field-breathe { to { transform: scale(1.025) translate3d(-.8%, .6%, 0); opacity: .72; } }

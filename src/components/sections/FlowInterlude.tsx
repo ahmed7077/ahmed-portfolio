@@ -26,7 +26,15 @@ export function FlowInterlude() {
       <Container className="relative z-10 flex h-full flex-col justify-center py-16">
         <p className="eyebrow mb-8">Signal / transformation / response</p>
         <h2 className="max-w-5xl font-display text-[clamp(3.2rem,8.5vw,8.5rem)] leading-[.9] tracking-[-.055em]">
-          Intelligence<br /><em className="font-light text-[#c49a57]">should <span className="flowing-word">move</span>.</em>
+          Intelligence<br />
+          <em className="font-light text-[#c49a57]">
+            should{" "}
+            <span className="flowing-word" aria-label="move">
+              {Array.from("move").map((letter, index) => (
+                <span key={letter} aria-hidden="true" style={{ animationDelay: `${index * .13}s` }}>{letter}</span>
+              ))}
+            </span>.
+          </em>
         </h2>
         <div className="mt-10 grid w-full max-w-3xl grid-cols-3 border-y border-[#f5f1e8]/12 py-6 md:mt-12">
           {[["Input", "Observe"], ["Model", "Reason"], ["Output", "Act"]].map(([label, value], index) => (
