@@ -48,6 +48,16 @@ export function FieldNotes() {
 export function GrowthMap() {
   return (
     <section id="growth" className="topo topo-orbits relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
+      <div className="synced-orbits pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="synced-orbits__group synced-orbits__group--green">
+          <span className="synced-orbits__outer" />
+          <span className="synced-orbits__inner" />
+        </div>
+        <div className="synced-orbits__group synced-orbits__group--gold">
+          <span className="synced-orbits__outer" />
+          <span className="synced-orbits__inner" />
+        </div>
+      </div>
       <Container className="relative z-10">
         <SectionHeading index="02" title="A map of becoming" note="Each coordinate compounds into the next. The path is not linear, but the direction is deliberate." />
         <div className="relative grid gap-0 md:grid-cols-4">
