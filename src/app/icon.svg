@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Muhammad Ahmed monogram">
+  <style>
+    .pulse {
+      transform-origin: 32px 32px;
+      animation: pulse 3.6s ease-out infinite;
+    }
+    .pulse.second { animation-delay: -1.8s; }
+    @keyframes pulse {
+      0% { transform: scale(.68); opacity: 0; }
+      32% { opacity: .78; }
+      100% { transform: scale(1.16); opacity: 0; }
+    }
+  </style>
+  <circle cx="32" cy="32" r="30" fill="#1e3a34"/>
+  <circle class="pulse" cx="32" cy="32" r="25" fill="none" stroke="#c49a57" stroke-width="1.5"/>
+  <circle class="pulse second" cx="32" cy="32" r="25" fill="none" stroke="#b86b4b" stroke-width="1.2"/>
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#c49a57" stroke-width="1.2" opacity=".72"/>
+  <text x="32" y="39" fill="#f5f1e8" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="700" text-anchor="middle">MA</text>
+</svg>
