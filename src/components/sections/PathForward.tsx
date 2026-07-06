@@ -83,13 +83,15 @@ export function CredentialsAndFuture() {
         <div className="future-expedition__map pointer-events-none absolute inset-0" aria-hidden="true">
           <span className="future-expedition__orbit future-expedition__orbit--one" />
           <span className="future-expedition__orbit future-expedition__orbit--two" />
-          {Array.from({ length: 5 }).map((_, index) => (
-            <span key={index} className={`future-expedition__beacon future-expedition__beacon--${index + 1}`} />
-          ))}
           <svg viewBox="0 0 1440 720" preserveAspectRatio="none">
             <path d="M-80 520 C260 160 470 610 760 290 S1190 70 1520 230" />
             <path d="M-40 610 C310 270 520 700 850 390 S1240 180 1490 310" />
           </svg>
+        </div>
+        <div className="future-expedition__beacons pointer-events-none absolute inset-0 z-20" aria-hidden="true">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <span key={index} className={`future-expedition__beacon future-expedition__beacon--${index + 1}`} />
+          ))}
         </div>
         <Container className="relative z-10">
           <div className="flex items-center gap-4"><Sprout size={20} /><p className="font-mono text-[10px] uppercase tracking-[.2em]">08 / Currently exploring</p></div>
