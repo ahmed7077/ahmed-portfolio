@@ -23,8 +23,12 @@ export function ExpeditionNav() {
         <ol className="flex flex-col items-end gap-4">
           {items.map(([id, label]) => (
             <li key={id}>
-              <a href={`#${id}`} aria-current={active === id ? "location" : undefined} className="group flex items-center gap-3">
-                <span key={active === id ? sequence : id} className={`nav-chapter-label translate-x-2 rounded-full bg-[#161815] px-3 py-1.5 text-[10px] uppercase tracking-widest text-[#f5f1e8] opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100 ${active === id ? "nav-chapter-label--entered" : ""}`}>{label}</span>
+              <a href={`#${id}`} title={label} aria-label={`Go to ${label}`} aria-current={active === id ? "location" : undefined} className="flex items-center gap-3">
+                {active === id && (
+                  <span key={`${id}-${sequence}`} className="nav-chapter-label nav-chapter-label--entered translate-x-2 rounded-full bg-[#161815] px-3 py-1.5 text-[10px] uppercase tracking-widest text-[#f5f1e8] opacity-0">
+                    {label}
+                  </span>
+                )}
                 <span className={`block rounded-full border border-[#1e3a34]/30 transition-all ${active === id ? "h-3 w-3 bg-[#b86b4b]" : "h-2 w-2 bg-[#f5f1e8]"}`} />
               </a>
             </li>
