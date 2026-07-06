@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Mail, Sprout } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { ArrowUpRight, Check, Copy, Mail, Sprout } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { profile } from "@/data/profile";
@@ -13,6 +14,10 @@ const education = [
 ];
 
 export function Experience() {
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const rotateX = useSpring(useTransform(py, [-.5, .5], [3.5, -3.5]), { stiffness: 180, damping: 24 });
+  const rotateY = useSpring(useTransform(px, [-.5, .5], [-4, 4]), { stiffness: 180, damping: 24 });
   return (
     <section id="experience" className="py-24 md:py-36">
       <Container>
@@ -20,13 +25,27 @@ export function Experience() {
         <div className="grid gap-16 lg:grid-cols-2">
           <article>
             <p className="eyebrow mb-6">Professional fieldwork</p>
-            <div className="rounded-[2rem] bg-[#1e3a34] p-7 text-[#f5f1e8] md:p-10">
+            <motion.div
+              onPointerMove={(event) => {
+                const rect = event.currentTarget.getBoundingClientRect();
+                px.set((event.clientX - rect.left) / rect.width - .5);
+                py.set((event.clientY - rect.top) / rect.height - .5);
+              }}
+              onPointerLeave={() => { px.set(0); py.set(0); }}
+              style={{ rotateX, rotateY, transformPerspective: 1200 }}
+              className="experience-card relative overflow-hidden rounded-[2rem] bg-[#1e3a34] p-7 text-[#f5f1e8] md:p-10"
+            >
+              <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full border border-[#c49a57]/20" />
               <div className="flex justify-between gap-4"><div><h3 className="font-display text-4xl">LLM Intern</h3><p className="mt-2 text-[#c49a57]">IonIdea · Remote, Bengaluru</p></div><span className="font-mono text-[9px] uppercase text-[#f5f1e8]/45">Jul—Sep 2025</span></div>
               <p className="mt-8 text-sm leading-7 text-[#f5f1e8]/60">Worked on Large Language Models and Generative AI, gaining hands-on experience in fine-tuning and deploying practical AI solutions.</p>
               <ul className="mt-7 space-y-3 border-t border-[#f5f1e8]/10 pt-7 text-sm leading-6 text-[#f5f1e8]/75">
                 {["Fine-tuned Meta Llama 3.2-3B-Instruct using LoRA and SFT", "Built with PyTorch, Transformers, PEFT, TRL, and custom datasets", "Explored zero-shot, one-shot, and few-shot prompting", "Created retrieval-first, deterministic inference workflows"].map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#b86b4b]" />{item}</li>)}
               </ul>
-            </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="https://github.com/ahmed7077/efficient-llm-adaptation" target="_blank" rel="noreferrer" className="lap-border inline-flex items-center gap-2 rounded-full border border-[#f5f1e8]/20 px-4 py-2 text-xs">Project repository <ArrowUpRight size={13} /></a>
+                <a href="https://www.ionidea.com/" target="_blank" rel="noreferrer" className="lap-border inline-flex items-center gap-2 rounded-full border border-[#c49a57]/45 px-4 py-2 text-xs text-[#c49a57]">IonIdea official site <ArrowUpRight size={13} /></a>
+              </div>
+            </motion.div>
           </article>
           <article>
             <p className="eyebrow mb-6">Academic strata</p>

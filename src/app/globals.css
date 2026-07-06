@@ -259,6 +259,13 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
   border-radius: 50%; background: radial-gradient(ellipse, rgba(30,58,52,.34), rgba(184,107,75,.1) 45%, transparent 73%);
   filter: blur(13px); transform: scaleY(.42);
 }
+.experience-card {
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 70px rgba(30,58,52,.18);
+  transition: box-shadow .35s ease;
+}
+.experience-card:hover { box-shadow: 0 42px 95px rgba(30,58,52,.3), 0 0 42px rgba(196,154,87,.1); }
+.experience-card > * { transform: translateZ(18px); }
 .depth-tile { transform: translateZ(0); transition: transform .6s cubic-bezier(.22,1,.36,1), background-color .6s ease; }
 .depth-tile:hover { z-index: 2; transform: perspective(900px) translateZ(22px) scale(1.015); background-color: #222a24; }
 .reflected-edge::after {
