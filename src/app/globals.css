@@ -95,6 +95,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
     radial-gradient(ellipse at 20% 40%, transparent 0 16%, rgba(123,146,120,.13) 16.3% 16.6%, transparent 17% 25%, rgba(123,146,120,.1) 25.3% 25.6%, transparent 26%),
     radial-gradient(ellipse at 80% 70%, transparent 0 20%, rgba(184,107,75,.1) 20.2% 20.5%, transparent 21% 31%, rgba(184,107,75,.07) 31.2% 31.5%, transparent 32%);
 }
+.topo-orbits {
+  background-size: 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0;
+  animation: topo-orbits-breathe 6.5s ease-in-out infinite alternate;
+}
 .research-paper-section {
   background-color: #e9ddc3;
   background-image: url("/research-paper-texture.webp");
@@ -189,22 +194,6 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 .field-notes-observatory { opacity: 1; }
 .field-notes-observatory__ring--one { right: 7%; top: 2%; width: 280px; height: 280px; animation-delay: -5s; }
 .field-notes-observatory__ring--two { left: 14%; bottom: -16%; width: 190px; height: 190px; animation-delay: -7s; }
-.growth-map-rings span {
-  position: absolute; border-radius: 50%; border: 1px solid rgba(30,58,52,.15);
-  box-shadow: 0 0 0 38px rgba(123,146,120,.035), 0 0 0 78px rgba(184,107,75,.025);
-  will-change: transform; animation: growth-ring-drift 11s ease-in-out infinite alternate;
-}
-.growth-map-rings span::after {
-  content: ""; position: absolute; inset: 17%; border-radius: inherit;
-  border: 1px dashed rgba(184,107,75,.22); animation: field-ring-spin 28s linear infinite;
-}
-.growth-map-rings span:nth-child(1) { width: 430px; height: 430px; right: -8%; top: -24%; }
-.growth-map-rings span:nth-child(2) { width: 260px; height: 260px; left: 18%; bottom: -31%; animation-delay: -4s; animation-duration: 14s; }
-.growth-map-rings span:nth-child(3) { width: 180px; height: 180px; right: 34%; top: 24%; animation-delay: -8s; animation-duration: 9s; }
-.knowledge-network-rings { transform: rotate(180deg); opacity: .85; }
-.knowledge-network-rings span:nth-child(1) { width: 520px; height: 520px; right: -12%; top: -42%; }
-.knowledge-network-rings span:nth-child(2) { width: 310px; height: 310px; left: 7%; bottom: -38%; }
-.knowledge-network-rings span:nth-child(3) { width: 210px; height: 210px; right: 48%; top: 7%; }
 .flow-interlude-lines svg { transform-origin: center; animation: flow-lines-breathe 8s ease-in-out infinite alternate; }
 .flow-interlude-lines path { stroke-dasharray: 28 14; animation: flow-line-travel 16s linear infinite; }
 .flow-interlude-lines path:nth-child(even) { animation-direction: reverse; animation-duration: 21s; }
@@ -280,7 +269,10 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes field-ring-breathe { to { transform: translate3d(-18px, 12px, 0) scale(1.07); opacity: .65; } }
 @keyframes field-ring-spin { to { transform: rotate(360deg); } }
 @keyframes field-ring-unified { to { transform: translate3d(-22px,14px,0) scale(1.075) rotate(7deg); } }
-@keyframes growth-ring-drift { to { transform: translate3d(-30px,22px,0) scale(1.1) rotate(10deg); opacity: .72; } }
+@keyframes topo-orbits-breathe {
+  0% { background-size: 96% 96%, 104% 104%; background-position: -1% 1%, 2% -1%; }
+  100% { background-size: 112% 108%, 92% 96%; background-position: 4% -3%, -3% 4%; }
+}
 @keyframes future-route-flow { to { stroke-dashoffset: -232; } }
 @keyframes future-orbit-drift { to { transform: translate3d(-32px,22px,0) scale(1.08) rotate(9deg); } }
 @keyframes future-beacon-pulse { 70% { box-shadow: 0 0 0 28px rgba(22,24,21,0); transform: scale(1.2); } 100% { box-shadow: 0 0 0 0 rgba(22,24,21,0); } }

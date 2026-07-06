@@ -99,10 +99,7 @@ export function KnowledgeNetwork() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const activeIndex = Object.keys(skills).indexOf(active);
   return (
-    <section id="network" className="topo relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
-      <div className="growth-map-rings knowledge-network-rings pointer-events-none absolute inset-0" aria-hidden="true">
-        <span /><span /><span />
-      </div>
+    <section id="network" className="topo topo-orbits relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
       <Container className="relative z-10">
         <SectionHeading index="05" title="Knowledge network" note="A working ecosystem of languages, models, tools, and physical systems." />
         <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
