@@ -16,6 +16,23 @@ const tones = {
   roots: "from-[#254238] to-[#141a17]",
 };
 const SkillConstellation = dynamic(() => import("@/components/three/SkillConstellation"), { ssr: false });
+const skillLinks: Record<string, string> = {
+  Python: "https://www.python.org/", Java: "https://www.java.com/", C: "https://www.iso.org/standard/82075.html",
+  "C++": "https://isocpp.org/", HTML: "https://html.spec.whatwg.org/", CSS: "https://www.w3.org/Style/CSS/",
+  MySQL: "https://www.mysql.com/", "Machine Learning": "https://developers.google.com/machine-learning",
+  "Deep Learning": "https://www.deeplearning.ai/", "Computer Vision": "https://opencv.org/", NLP: "https://huggingface.co/learn/nlp-course/",
+  LLMs: "https://huggingface.co/learn/llm-course/", "Generative AI": "https://ai.google/discover/generativeai/",
+  "Prompt Engineering": "https://platform.openai.com/docs/guides/prompt-engineering", TensorFlow: "https://www.tensorflow.org/",
+  PyTorch: "https://pytorch.org/", "Hugging Face": "https://huggingface.co/", PEFT: "https://huggingface.co/docs/peft/",
+  TRL: "https://huggingface.co/docs/trl/", LoRA: "https://huggingface.co/docs/peft/conceptual_guides/lora",
+  OpenCV: "https://opencv.org/", CNNs: "https://www.tensorflow.org/tutorials/images/cnn",
+  EfficientNetB0: "https://keras.io/api/applications/efficientnet/", "Raspberry Pi": "https://www.raspberrypi.com/",
+  Arduino: "https://www.arduino.cc/", ThingSpeak: "https://thingspeak.mathworks.com/", Git: "https://git-scm.com/",
+  GitHub: "https://github.com/", "VS Code": "https://code.visualstudio.com/", "Google Colab": "https://colab.google/",
+  Ollama: "https://ollama.com/", Linux: "https://www.linux.org/", "Data Structures": "https://en.wikipedia.org/wiki/Data_structure",
+  OOP: "https://en.wikipedia.org/wiki/Object-oriented_programming", DBMS: "https://en.wikipedia.org/wiki/Database",
+  "Operating Systems": "https://en.wikipedia.org/wiki/Operating_system",
+};
 
 function ProjectArtifact({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const px = useMotionValue(0);
@@ -77,7 +94,8 @@ export function Projects() {
 }
 
 export function KnowledgeNetwork() {
-  const [active, setActive] = useState("AI / ML");
+  const [active, setActive] = useState("Programming");
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const activeIndex = Object.keys(skills).indexOf(active);
   return (
     <section id="network" className="topo border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
@@ -86,7 +104,7 @@ export function KnowledgeNetwork() {
         <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
           <div className="flex flex-wrap content-start gap-2 lg:block lg:space-y-2">
             {Object.keys(skills).map((group, index) => (
-              <button key={group} onClick={() => setActive(group)} className={`flex items-center gap-4 rounded-full px-4 py-3 text-left text-sm transition lg:w-full lg:rounded-none lg:border-b lg:px-0 ${active === group ? "bg-[#1e3a34] text-[#f5f1e8] lg:bg-transparent lg:text-[#b86b4b]" : "hairline text-[#1e3a34]/60"}`}>
+              <button key={group} onClick={() => { setActive(group); setSelectedSkill(null); }} className={`flex items-center gap-4 rounded-full px-4 py-3 text-left text-sm transition lg:w-full lg:rounded-none lg:border-b lg:px-0 ${active === group ? "bg-[#1e3a34] text-[#f5f1e8] lg:bg-transparent lg:text-[#b86b4b]" : "hairline text-[#1e3a34]/60"}`}>
                 <span className="font-mono text-[9px]">0{index + 1}</span>{group}
               </button>
             ))}
@@ -97,7 +115,19 @@ export function KnowledgeNetwork() {
             <p className="relative font-mono text-[10px] uppercase tracking-[.2em] text-[#c49a57]">Active cluster / {active}</p>
             <div className="relative mt-14 flex flex-wrap gap-3">
               {skills[active as keyof typeof skills].map((skill, index) => (
-                <motion.span key={`${active}-${skill}`} initial={{ opacity: 0, scale: .85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * .05 }} className={`rounded-full border px-5 py-3 ${index === 0 ? "border-[#c49a57] bg-[#c49a57] text-[#161815]" : "border-[#f5f1e8]/20 bg-[#f5f1e8]/[.04]"}`}>{skill}</motion.span>
+                <motion.a
+                  key={`${active}-${skill}`}
+                  href={skillLinks[skill]}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setSelectedSkill(skill)}
+                  initial={{ opacity: 0, scale: .85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * .05 }}
+                  className={`rounded-full border px-5 py-3 transition duration-300 hover:-translate-y-1 hover:border-[#c49a57] hover:bg-[#c49a57] hover:text-[#161815] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c49a57] ${selectedSkill === skill ? "border-[#c49a57] bg-[#c49a57] text-[#161815]" : "border-[#f5f1e8]/20 bg-[#f5f1e8]/[.04]"}`}
+                >
+                  {skill} ↗
+                </motion.a>
               ))}
             </div>
           </div>
