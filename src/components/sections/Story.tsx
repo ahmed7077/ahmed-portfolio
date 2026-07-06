@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useState } from "react";
 import { ArrowDown, BookOpen, BrainCircuit, Cpu, Map } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -79,6 +80,7 @@ export function GrowthMap() {
 
 export function FeaturedProject() {
   const flow = ["User query", "Knowledge base", "Exact match or fine-tuned LLM", "Final response"];
+  const [activeStep, setActiveStep] = useState<number | null>(null);
   return (
     <section id="work" className="bg-[#161815] py-24 text-[#f5f1e8] md:py-36">
       <Container>
@@ -101,13 +103,17 @@ export function FeaturedProject() {
             <div className="space-y-3">
               {flow.map((item, index) => (
                 <div key={item}>
-                  <motion.div
+                  <motion.button
+                    type="button"
+                    onPointerEnter={() => setActiveStep(index)}
+                    onFocus={() => setActiveStep(index)}
+                    onClick={() => setActiveStep(index)}
                     initial={{ opacity: .35, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ x: 6, borderColor: "rgba(196,154,87,.65)" }}
+                    whileHover={{ x: 8 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * .18, duration: .55 }}
-                    className={`group/node relative flex min-h-20 items-center justify-between overflow-hidden rounded-xl border px-5 ${index === 2 ? "border-[#b86b4b]/60 bg-[#b86b4b]/10" : "border-[#f5f1e8]/12 bg-[#f5f1e8]/[.03]"}`}
+                    transition={{ delay: index * .08, duration: .28 }}
+                    className={`group/node relative flex min-h-20 w-full items-center justify-between overflow-hidden rounded-xl border px-5 text-left transition-colors duration-200 ${activeStep === index ? "border-[#c49a57] bg-[#c49a57]/15 shadow-[0_0_32px_rgba(196,154,87,.12)]" : "border-[#f5f1e8]/12 bg-[#f5f1e8]/[.03] hover:border-[#c49a57]/70 hover:bg-[#c49a57]/10"}`}
                   >
                     <motion.span className="absolute left-0 top-0 h-full w-1 bg-[#c49a57]" initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ delay: .25 + index * .2, duration: .45 }} />
                     <span className="font-display text-lg">{item}</span>
@@ -115,10 +121,10 @@ export function FeaturedProject() {
                       <motion.span className="h-2 w-2 rounded-full bg-[#c49a57]" animate={{ scale: [1, 1.8, 1], opacity: [.45, 1, .45] }} transition={{ duration: 2.2, delay: index * .35, repeat: Infinity }} />
                       <span className="font-mono text-[9px] text-[#c49a57]">0{index + 1}</span>
                     </span>
-                  </motion.div>
+                  </motion.button>
                   {index < flow.length - 1 && (
                     <div className="relative ml-8 h-5 w-px overflow-visible bg-[#c49a57]/20">
-                      <motion.span className="absolute -left-[2px] top-0 h-[5px] w-[5px] rounded-full bg-[#c49a57] shadow-[0_0_10px_#c49a57]" animate={{ y: [0, 17, 0], opacity: [0, 1, 0] }} transition={{ duration: 1.35, delay: index * .3, repeat: Infinity, ease: "easeInOut" }} />
+                      <motion.span className="absolute -left-[2px] top-0 h-[5px] w-[5px] rounded-full bg-[#c49a57] shadow-[0_0_10px_#c49a57]" animate={{ y: [0, 17, 0], opacity: [0, 1, 0] }} transition={{ duration: .72, delay: index * .12, repeat: Infinity, ease: "easeInOut" }} />
                     </div>
                   )}
                 </div>
