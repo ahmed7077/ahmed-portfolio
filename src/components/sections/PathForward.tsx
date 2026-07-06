@@ -79,8 +79,17 @@ export function CredentialsAndFuture() {
           </div>
         </Container>
       </section>
-      <section className="overflow-hidden bg-[#b86b4b] py-24 text-[#161815] md:py-32">
-        <Container>
+      <section className="future-expedition relative overflow-hidden bg-[#b86b4b] py-24 text-[#161815] md:py-32">
+        <div className="future-expedition__map pointer-events-none absolute inset-0" aria-hidden="true">
+          <span className="future-expedition__orbit future-expedition__orbit--one" />
+          <span className="future-expedition__orbit future-expedition__orbit--two" />
+          <span className="future-expedition__beacon" />
+          <svg viewBox="0 0 1440 720" preserveAspectRatio="none">
+            <path d="M-80 520 C260 160 470 610 760 290 S1190 70 1520 230" />
+            <path d="M-40 610 C310 270 520 700 850 390 S1240 180 1490 310" />
+          </svg>
+        </div>
+        <Container className="relative z-10">
           <div className="flex items-center gap-4"><Sprout size={20} /><p className="font-mono text-[10px] uppercase tracking-[.2em]">08 / Currently exploring</p></div>
           <h2 className="mt-8 font-display text-[clamp(3rem,8vw,8rem)] leading-[.86] tracking-[-.05em]">The next<br /><em className="font-light">expedition.</em></h2>
           <div className="mt-14 flex flex-wrap gap-x-8 gap-y-4 border-t border-[#161815]/20 pt-8">{future.map((item, index) => <span key={item} className="font-display text-xl md:text-2xl"><sup className="mr-2 font-mono text-[9px]">0{index + 1}</sup>{item}</span>)}</div>
