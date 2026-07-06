@@ -95,6 +95,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
     radial-gradient(ellipse at 20% 40%, transparent 0 16%, rgba(123,146,120,.13) 16.3% 16.6%, transparent 17% 25%, rgba(123,146,120,.1) 25.3% 25.6%, transparent 26%),
     radial-gradient(ellipse at 80% 70%, transparent 0 20%, rgba(184,107,75,.1) 20.2% 20.5%, transparent 21% 31%, rgba(184,107,75,.07) 31.2% 31.5%, transparent 32%);
 }
+.research-paper-section {
+  background-color: #e9ddc3;
+  background-image: url("/research-paper-texture.webp");
+  background-size: cover;
+  background-position: center;
+}
 .project-index { -webkit-text-stroke: 1px rgba(245,241,232,.28); color: transparent; }
 .lap-border, a.rounded-full:not(.ma-orbit), button.rounded-full { position: relative; isolation: isolate; }
 .lap-border::before, a.rounded-full:not(.ma-orbit)::before, button.rounded-full::before {

@@ -82,8 +82,9 @@ function ProjectArtifact({ project, index }: { project: (typeof projects)[number
 
 export function Projects() {
   return (
-    <section className="py-24 md:py-36">
-      <Container>
+    <section className="research-paper-section relative overflow-hidden py-24 md:py-36">
+      <div className="absolute inset-0 bg-[#f5f1e8]/30" aria-hidden="true" />
+      <Container className="relative z-10">
         <SectionHeading index="04" title="Research expeditions" note="Selected projects that turn AI research into practical systems for language, vision, and connected environments." />
         <div className="space-y-5">
           {projects.map((project, index) => <ProjectArtifact key={project.title} project={project} index={index} />)}
