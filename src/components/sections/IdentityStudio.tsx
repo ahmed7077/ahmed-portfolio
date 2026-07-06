@@ -24,14 +24,13 @@ export function IdentityStudio() {
               Technology is most useful when it stays grounded in people. I build at the meeting point of language, vision, and the physical world—turning research into systems that can be understood and used.
             </p>
             <div className="mt-9 grid max-w-lg grid-cols-3 gap-3">
-              {[["Bengaluru", "Base"], ["ISE · 2027", "Formation"], ["AI + Edge", "Practice"]].map(([value, label]) => (
-                <div key={label} className="border-t border-[#1e3a34]/20 pt-4">
-                  <strong className="font-display text-lg">{value}</strong>
+              {[["Bengaluru", "Base"], ["ISE · 2027", "Formation"], ["CSE", "Practice"]].map(([value, label]) => (
+                <div key={label} className="border-t border-[#1e3a34]/20 pt-4 text-left">
+                  <strong className="block min-h-7 font-display text-lg leading-7">{value}</strong>
                   <span className="mt-1 block font-mono text-[8px] uppercase tracking-widest text-[#1e3a34]/48">{label}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-9 max-w-sm font-mono text-[9px] uppercase leading-5 tracking-[.14em] text-[#1e3a34]/42">Move across the portrait to shift perspective and light.</p>
           </div>
           <motion.div
             onPointerMove={(event) => {
@@ -53,9 +52,7 @@ export function IdentityStudio() {
                 <Image src="/muhammad-ahmed-profile.jpg" alt="Portrait of Muhammad Ahmed" fill priority className="object-cover" sizes="(max-width: 768px) 100vw, 520px" />
               </motion.div>
               <div className="pointer-events-none absolute inset-4 z-20 rounded-[1.8rem] border border-[#f5f1e8]/12" />
-              <div className="absolute inset-x-0 bottom-0 z-30 flex justify-between bg-gradient-to-t from-[#090b0a] via-[#090b0a]/55 to-transparent p-7 pt-24 font-mono text-[9px] uppercase tracking-widest text-[#f5f1e8]/70">
-                <span>Muhammad Ahmed</span><span>Portrait / 01</span>
-              </div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-28 bg-gradient-to-t from-[#090b0a]/55 to-transparent" />
             </div>
           </motion.div>
         </div>
