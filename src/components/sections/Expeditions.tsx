@@ -67,7 +67,7 @@ export function Projects() {
   return (
     <section className="py-24 md:py-36">
       <Container>
-        <SectionHeading index="04" title="Research expeditions" note="Engineering artifacts shaped by constraints: limited compute, imperfect data, and real environments." />
+        <SectionHeading index="04" title="Research expeditions" note="Selected projects that turn AI research into practical systems for language, vision, and connected environments." />
         <div className="space-y-5">
           {projects.map((project, index) => <ProjectArtifact key={project.title} project={project} index={index} />)}
         </div>
