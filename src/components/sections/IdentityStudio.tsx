@@ -11,11 +11,28 @@ export function IdentityStudio() {
   const rotateY = useSpring(useTransform(pointerX, [-.5, .5], [-8, 8]), { stiffness: 170, damping: 20 });
   const imageX = useSpring(useTransform(pointerX, [-.5, .5], [-14, 14]), { stiffness: 140, damping: 22 });
   const imageY = useSpring(useTransform(pointerY, [-.5, .5], [-11, 11]), { stiffness: 140, damping: 22 });
+  const backgroundX = useSpring(useTransform(pointerX, [-.5, .5], [-24, 24]), { stiffness: 90, damping: 28 });
+  const backgroundY = useSpring(useTransform(pointerY, [-.5, .5], [-18, 18]), { stiffness: 90, damping: 28 });
 
   return (
-    <section id="identity" className="boundary-glow relative overflow-hidden bg-[#dcd0ba] py-24 md:py-36">
+    <section
+      id="identity"
+      onPointerMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        pointerX.set((event.clientX - rect.left) / rect.width - .5);
+        pointerY.set((event.clientY - rect.top) / rect.height - .5);
+      }}
+      onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}
+      className="boundary-glow relative overflow-hidden bg-[#dcd0ba] py-24 md:py-36"
+    >
+      <motion.div
+        style={{ x: backgroundX, y: backgroundY, scale: 1.06 }}
+        className="identity-topography pointer-events-none absolute inset-[-3%]"
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[#e7dcc8]/58 backdrop-saturate-[.82]" aria-hidden="true" />
       <div className="flow-orbit absolute -right-40 top-0 h-[620px] w-[620px] rounded-full border border-[#1e3a34]/10" aria-hidden="true" />
-      <Container>
+      <Container className="relative z-10">
         <div className="grid items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <p className="eyebrow mb-7">01 / Human in the loop</p>
@@ -33,15 +50,6 @@ export function IdentityStudio() {
             </div>
           </div>
           <motion.div
-            onPointerMove={(event) => {
-              const rect = event.currentTarget.getBoundingClientRect();
-              const x = (event.clientX - rect.left) / rect.width;
-              const y = (event.clientY - rect.top) / rect.height;
-              pointerX.set(x - .5); pointerY.set(y - .5);
-            }}
-            onPointerLeave={() => {
-              pointerX.set(0); pointerY.set(0);
-            }}
             style={{ rotateX, rotateY, transformPerspective: 1500 }}
             className="relative isolate mx-auto aspect-[4/5] w-full max-w-[520px] [backface-visibility:hidden]"
           >

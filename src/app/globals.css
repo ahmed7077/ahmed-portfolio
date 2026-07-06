@@ -101,6 +101,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
   background-size: cover;
   background-position: center;
 }
+.identity-topography {
+  background-image: url("/identity-topography.webp");
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  filter: contrast(.96) saturate(.88);
+}
 .project-index { -webkit-text-stroke: 1px rgba(245,241,232,.28); color: transparent; }
 .lap-border, a.rounded-full:not(.ma-orbit), button.rounded-full { position: relative; isolation: isolate; }
 .lap-border::before, a.rounded-full:not(.ma-orbit)::before, button.rounded-full::before {
