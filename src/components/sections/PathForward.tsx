@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { profile } from "@/data/profile";
 
 const education = [
-  ["2023 — 2027", "B.Tech, Information Science & Engineering", "Presidency University, Bengaluru", "CGPA 7.58"],
+  ["2023 — 2027", "B.Tech, Information Science & Engineering", "Presidency University, Bengaluru", "CGPA 7.70"],
   ["2021 — 2023", "12th PUC · PCMCS", "Whitefield Global School / Deeksha", "82%"],
   ["2008 — 2021", "10th ICSE", "Ryan International School, Bengaluru", "81%"],
 ];
