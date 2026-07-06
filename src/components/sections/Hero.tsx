@@ -36,7 +36,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,24,21,.78)_0%,rgba(22,24,21,.3)_55%,rgba(22,24,21,.15)_100%)]" />
       <Container className="relative z-10 flex min-h-[760px] flex-col justify-between py-7 md:min-h-screen md:py-10">
         <header className="flex items-center justify-between border-b border-[#f5f1e8]/15 pb-5">
-          <a href="#arrival" className="ma-orbit grid h-12 w-12 place-items-center rounded-full font-display text-xl">MA<span className="absolute translate-x-[13px] text-[#b86b4b]">.</span></a>
+          <div className="ma-orbit grid h-12 w-12 place-items-center rounded-full font-display text-xl" aria-label="Muhammad Ahmed monogram">MA</div>
           <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[#f5f1e8]/55">Living Intelligence / Portfolio 2026</p>
         </header>
         <div className="grid items-end gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px]">
