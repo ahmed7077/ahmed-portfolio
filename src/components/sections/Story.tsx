@@ -14,8 +14,17 @@ const observations = [
 
 export function FieldNotes() {
   return (
-    <section id="notes" className="relative py-24 md:py-36">
-      <Container>
+    <section id="notes" className="relative overflow-hidden py-24 md:py-36">
+      <div className="field-notes-map pointer-events-none absolute inset-0" aria-hidden="true">
+        <span className="field-notes-ring field-notes-ring--large" />
+        <span className="field-notes-ring field-notes-ring--small" />
+        <svg viewBox="0 0 1440 700" preserveAspectRatio="none">
+          <path d="M-80 520 C260 330 410 680 760 390 S1220 120 1520 250" />
+          <path d="M-60 590 C300 400 500 720 820 450 S1210 210 1510 310" />
+          <path d="M600 -30 C760 170 660 310 900 430 S1270 570 1490 720" />
+        </svg>
+      </div>
+      <Container className="relative z-10">
         <SectionHeading index="01" title="Field notes" note="Observations from the intersection of learning systems and the physical world." />
         <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr]">
           <p className="font-display text-[clamp(1.6rem,3.4vw,3.1rem)] leading-[1.2] tracking-[-.025em] text-[#1e3a34]">{profile.about}</p>
