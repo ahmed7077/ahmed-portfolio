@@ -6,12 +6,11 @@ export function DepthWipe() {
   const wipeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let revealTimer = 0;
     let holdTimer = 0;
     let finishTimer = 0;
     const navigate = (event: MouseEvent) => {
-      if (reduced.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
       const id = link?.getAttribute("href")?.slice(1);
       const target = id ? document.getElementById(id) : null;

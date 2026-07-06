@@ -11,7 +11,6 @@ function ScrollCamera() {
   const progress = useRef(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const update = () => { progress.current = Math.min(window.scrollY / Math.max(window.innerHeight * 1.4, 1), 1); };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -39,7 +38,7 @@ function Terrain() {
   });
   return (
     <mesh ref={mesh} position={[0, -1.5, -1]} rotation={[-1.2, 0, 0]} scale={[7, 5, 1.2]}>
-      <planeGeometry args={[2, 2, 42, 42]} />
+      <planeGeometry args={[2, 2, 30, 30]} />
       <MeshDistortMaterial color="#294a40" roughness={0.92} metalness={0.02} wireframe distort={0.38} speed={0.55} />
     </mesh>
   );
@@ -67,7 +66,7 @@ function Nodes() {
 
 export default function TerrainScene() {
   return (
-    <Canvas dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+    <Canvas dpr={1} gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}>
       <fog attach="fog" args={["#1e3a34", 3.5, 10]} />
       <ambientLight intensity={1.5} />
       <directionalLight position={[2, 4, 5]} intensity={2} color="#e7dcc8" />

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { MapPin } from "lucide-react";
 import { ContourLayer } from "@/components/background/ContourLayer";
 import { Container } from "@/components/layout/Container";
@@ -13,7 +13,6 @@ import { profile } from "@/data/profile";
 const TerrainScene = dynamic(() => import("@/components/three/TerrainScene"), { ssr: false });
 
 export function Hero() {
-  const reduced = useReducedMotion();
   return (
     <section id="arrival" className="relative min-h-[760px] overflow-hidden bg-[#1e3a34] text-[#f5f1e8] md:min-h-screen">
       <ContourLayer />
@@ -31,7 +30,7 @@ export function Hero() {
         ))}
       </div>
       <div className="absolute inset-x-0 bottom-0 h-2/3 opacity-75 [mask-image:linear-gradient(to_top,black,transparent)]">
-        {!reduced && <TerrainScene />}
+        <TerrainScene />
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,24,21,.78)_0%,rgba(22,24,21,.3)_55%,rgba(22,24,21,.15)_100%)]" />
       <Container className="relative z-10 flex min-h-[760px] flex-col justify-between py-7 md:min-h-screen md:py-10">
@@ -51,7 +50,7 @@ export function Hero() {
             </div>
           </motion.div>
           <aside className="flex items-end justify-between border-t border-[#f5f1e8]/15 pt-6 md:flex md:min-h-[500px] md:flex-col md:items-center md:justify-center md:border-l md:border-t-0 md:pl-10 md:text-center">
-            <motion.div animate={reduced ? undefined : { y: [0, -9, 0], rotate: [-1.5, 1.5, -1.5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+            <motion.div animate={{ y: [0, -9, 0], rotate: [-1.5, 1.5, -1.5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
               <CompassGlyph className="h-24 w-24 text-[#c49a57] md:h-36 md:w-36" />
             </motion.div>
             <div className="mt-5 max-w-[290px]">

@@ -248,10 +248,6 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
   .section-title { animation: title-settle linear both; animation-timeline: view(); animation-range: entry 5% cover 35%; }
   @keyframes title-settle { from { opacity: .2; transform: translateY(35px); letter-spacing: -.01em; } }
 }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-}
 @media (pointer: fine) {
   body, a, button { cursor: none; }
 }
