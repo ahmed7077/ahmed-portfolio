@@ -57,8 +57,11 @@ export function FieldNotes() {
 
 export function GrowthMap() {
   return (
-    <section id="growth" className="topo border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
-      <Container>
+    <section id="growth" className="topo relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
+      <div className="growth-map-rings pointer-events-none absolute inset-0" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <Container className="relative z-10">
         <SectionHeading index="02" title="A map of becoming" note="Each coordinate compounds into the next. The path is not linear, but the direction is deliberate." />
         <div className="relative grid gap-0 md:grid-cols-4">
           <div className="absolute left-[15px] top-0 h-full w-px bg-[#1e3a34]/20 md:left-0 md:top-[15px] md:h-px md:w-full" />
