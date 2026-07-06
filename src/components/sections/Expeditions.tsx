@@ -100,10 +100,6 @@ export function KnowledgeNetwork() {
   const activeIndex = Object.keys(skills).indexOf(active);
   return (
     <section id="network" className="topo topo-orbits relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
-      <div className="orbit-collision-field pointer-events-none absolute inset-0" aria-hidden="true">
-        <span className="orbit-collision-field__orbit orbit-collision-field__orbit--green" />
-        <span className="orbit-collision-field__orbit orbit-collision-field__orbit--gold" />
-      </div>
       <Container className="relative z-10">
         <SectionHeading index="05" title="Knowledge network" note="A working ecosystem of languages, models, tools, and physical systems." />
         <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
