@@ -24,6 +24,16 @@ export function FieldNotes() {
           <path d="M600 -30 C760 170 660 310 900 430 S1270 570 1490 720" />
         </svg>
       </div>
+      <div className="field-notes-observatory pointer-events-none absolute bottom-[6%] right-[4%] hidden h-[38%] w-[47%] lg:block" aria-hidden="true">
+        <span className="field-notes-observatory__ring field-notes-observatory__ring--one" />
+        <span className="field-notes-observatory__ring field-notes-observatory__ring--two" />
+        <span className="field-notes-observatory__core" />
+        <svg viewBox="0 0 700 360" preserveAspectRatio="none">
+          <path d="M0 230 C120 90 220 310 350 170 S570 60 720 130" />
+          <path d="M-20 290 C150 160 250 350 420 220 S610 140 730 190" />
+          <path d="M80 360 C170 230 300 260 390 110 S570 15 700 70" />
+        </svg>
+      </div>
       <Container className="relative z-10">
         <SectionHeading index="01" title="Field notes" note="Observations from the intersection of learning systems and the physical world." />
         <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr]">
