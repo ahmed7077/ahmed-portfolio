@@ -101,6 +101,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
   background-position: 0 0, 0 0;
   animation: topo-orbits-sequential-breathe 8s ease-in-out infinite;
 }
+#growth.topo-orbits {
+  background-image:
+    radial-gradient(ellipse at 20% 40%, transparent 0 16%, rgba(72,105,81,.24) 16.3% 16.8%, transparent 17.2% 25%, rgba(72,105,81,.18) 25.3% 25.8%, transparent 26.2%),
+    radial-gradient(ellipse at 80% 70%, transparent 0 20%, rgba(184,107,75,.2) 20.2% 20.8%, transparent 21.2% 31%, rgba(184,107,75,.14) 31.2% 31.8%, transparent 32.2%);
+  animation-duration: 6.5s;
+}
 .research-paper-section {
   background-color: #e9ddc3;
   background-image: url("/research-paper-texture.webp");
@@ -180,15 +186,15 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 .field-notes-map { opacity: 1; }
 .field-notes-ring, .field-notes-observatory__ring {
   position: absolute; display: block; border-radius: 50%;
-  border: 1px solid rgba(30,58,52,.24);
-  box-shadow: 0 0 0 28px rgba(30,58,52,.028), inset 0 0 34px rgba(196,154,87,.035);
-  opacity: .78;
+  border: 2px solid rgba(30,58,52,.38);
+  box-shadow: 0 0 0 30px rgba(30,58,52,.045), 0 0 42px rgba(196,154,87,.13), inset 0 0 40px rgba(196,154,87,.08);
+  opacity: .92;
   will-change: transform;
-  animation: field-ring-unified 10s ease-in-out infinite alternate;
+  animation: field-ring-glide 11s ease-in-out infinite;
 }
 .field-notes-ring::after, .field-notes-observatory__ring::after {
   content: ""; position: absolute; inset: 14%; border-radius: inherit;
-  border: 1px dashed rgba(184,107,75,.28); animation: field-ring-spin 28s linear infinite;
+  border: 2px dashed rgba(184,107,75,.42); animation: field-ring-spin 24s linear infinite;
 }
 .field-notes-ring--large { right: -10rem; top: 4rem; width: 34rem; height: 34rem; }
 .field-notes-ring--small { left: 7%; bottom: -8rem; width: 19rem; height: 19rem; animation-delay: -3s; }
@@ -280,12 +286,17 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes field-route-flow { to { stroke-dashoffset: -256; } }
 @keyframes field-ring-breathe { to { transform: translate3d(-18px, 12px, 0) scale(1.07); opacity: .65; } }
 @keyframes field-ring-spin { to { transform: rotate(360deg); } }
-@keyframes field-ring-unified { to { transform: translate3d(-22px,14px,0) scale(1.075) rotate(7deg); } }
+@keyframes field-ring-glide {
+  0%, 100% { transform: translate3d(0,0,0) scale(1) rotate(0); }
+  25% { transform: translate3d(34px,-18px,0) scale(1.08) rotate(5deg); }
+  52% { transform: translate3d(-24px,20px,0) scale(1.04) rotate(-4deg); }
+  76% { transform: translate3d(18px,30px,0) scale(1.1) rotate(7deg); }
+}
 @keyframes topo-orbits-sequential-breathe {
   0%, 100% { background-size: 100% 100%, 100% 100%; }
-  22% { background-size: 110% 110%, 100% 100%; }
+  22% { background-size: 118% 118%, 100% 100%; }
   42% { background-size: 100% 100%, 100% 100%; }
-  68% { background-size: 100% 100%, 110% 110%; }
+  68% { background-size: 100% 100%, 118% 118%; }
   88% { background-size: 100% 100%, 100% 100%; }
 }
 @keyframes future-route-flow { to { stroke-dashoffset: -232; } }
