@@ -7,6 +7,7 @@ const items = [["arrival", "Arrival"], ["identity", "Identity"], ["systems", "Sy
 export function ExpeditionNav() {
   const [active, setActive] = useState("arrival");
   const [sequence, setSequence] = useState(0);
+  const [expanded, setExpanded] = useState(false);
   const activeRef = useRef("arrival");
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -19,11 +20,31 @@ export function ExpeditionNav() {
     return () => observer.disconnect();
   }, []);
   return (
-      <nav aria-label="Expedition sections" className="expedition-nav fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
+      <nav
+        aria-label="Expedition sections"
+        data-expanded={expanded}
+        onPointerEnter={() => setExpanded(true)}
+        onPointerLeave={() => setExpanded(false)}
+        onFocusCapture={() => setExpanded(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setExpanded(false);
+        }}
+        className="expedition-nav fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 lg:block"
+      >
         <ol className="expedition-nav__track flex flex-col items-end gap-4">
           {items.map(([id, label]) => (
             <li key={id}>
-              <a href={`#${id}`} title={label} aria-label={`Go to ${label}`} aria-current={active === id ? "location" : undefined} className="flex items-center gap-3">
+              <a
+                href={`#${id}`}
+                title={label}
+                aria-label={`Go to ${label}`}
+                aria-current={active === id ? "location" : undefined}
+                onClick={(event) => {
+                  setExpanded(false);
+                  event.currentTarget.blur();
+                }}
+                className="flex items-center gap-3"
+              >
                 {active === id && (
                   <span key={`${id}-${sequence}`} className="nav-chapter-label nav-chapter-label--entered translate-x-2 rounded-full bg-[#161815] px-3 py-1.5 text-[10px] uppercase tracking-widest text-[#f5f1e8] opacity-0">
                     {label}

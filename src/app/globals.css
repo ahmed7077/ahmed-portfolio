@@ -67,19 +67,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
   transition: transform .32s cubic-bezier(.22,1,.36,1), gap .32s ease;
   will-change: transform;
 }
-.expedition-nav:hover .expedition-nav__track,
-.expedition-nav:focus-within .expedition-nav__track {
+.expedition-nav[data-expanded="true"] .expedition-nav__track {
   transform: translateX(-8px) scale(1.32);
   gap: 1.3rem;
 }
 .expedition-nav__dot { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
-.expedition-nav:hover .expedition-nav__dot,
-.expedition-nav:focus-within .expedition-nav__dot {
+.expedition-nav[data-expanded="true"] .expedition-nav__dot {
   transform: scale(1.25);
   box-shadow: 0 0 14px rgba(184,107,75,.32);
 }
 .expedition-nav a { transition: filter .25s ease; }
-.expedition-nav:hover a { filter: drop-shadow(0 3px 8px rgba(22,24,21,.14)); }
+.expedition-nav[data-expanded="true"] a { filter: drop-shadow(0 3px 8px rgba(22,24,21,.14)); }
 .depth-wipe { position: fixed; inset: 0; z-index: 110; pointer-events: none; visibility: hidden; }
 .depth-wipe__layer { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; }
 .depth-wipe__layer--one { background: #b86b4b; }
