@@ -59,6 +59,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 }
 .topographic-flow-line:nth-child(even) { animation-duration: 14s, 7s; animation-direction: reverse, alternate-reverse; }
 .nav-chapter-label--entered { animation: nav-chapter-enter 2.5s cubic-bezier(.22,1,.36,1) both; }
+.expedition-nav__track {
+  transform-origin: right center;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), gap .35s ease;
+  will-change: transform;
+}
+.expedition-nav:hover .expedition-nav__track,
+.expedition-nav:focus-within .expedition-nav__track {
+  transform: scale(1.2);
+  gap: 1.15rem;
+}
+.expedition-nav a { transition: filter .25s ease; }
+.expedition-nav:hover a { filter: drop-shadow(0 3px 8px rgba(22,24,21,.14)); }
 .depth-wipe { position: fixed; inset: 0; z-index: 110; pointer-events: none; visibility: hidden; }
 .depth-wipe__layer { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; }
 .depth-wipe__layer--one { background: #b86b4b; }

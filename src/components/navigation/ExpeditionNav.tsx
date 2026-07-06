@@ -19,8 +19,8 @@ export function ExpeditionNav() {
     return () => observer.disconnect();
   }, []);
   return (
-      <nav aria-label="Expedition sections" className="fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
-        <ol className="flex flex-col items-end gap-4">
+      <nav aria-label="Expedition sections" className="expedition-nav fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
+        <ol className="expedition-nav__track flex flex-col items-end gap-4">
           {items.map(([id, label]) => (
             <li key={id}>
               <a href={`#${id}`} title={label} aria-label={`Go to ${label}`} aria-current={active === id ? "location" : undefined} className="flex items-center gap-3">
