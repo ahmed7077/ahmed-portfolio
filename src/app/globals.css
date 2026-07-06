@@ -59,15 +59,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline
 }
 .topographic-flow-line:nth-child(even) { animation-duration: 14s, 7s; animation-direction: reverse, alternate-reverse; }
 .nav-chapter-label--entered { animation: nav-chapter-enter 2.5s cubic-bezier(.22,1,.36,1) both; }
+.expedition-nav {
+  padding: 2.25rem 1.25rem 2.25rem 3.5rem;
+}
 .expedition-nav__track {
   transform-origin: right center;
-  transition: transform .35s cubic-bezier(.22,1,.36,1), gap .35s ease;
+  transition: transform .32s cubic-bezier(.22,1,.36,1), gap .32s ease;
   will-change: transform;
 }
 .expedition-nav:hover .expedition-nav__track,
 .expedition-nav:focus-within .expedition-nav__track {
-  transform: scale(1.2);
-  gap: 1.15rem;
+  transform: translateX(-8px) scale(1.32);
+  gap: 1.3rem;
+}
+.expedition-nav__dot { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.expedition-nav:hover .expedition-nav__dot,
+.expedition-nav:focus-within .expedition-nav__dot {
+  transform: scale(1.25);
+  box-shadow: 0 0 14px rgba(184,107,75,.32);
 }
 .expedition-nav a { transition: filter .25s ease; }
 .expedition-nav:hover a { filter: drop-shadow(0 3px 8px rgba(22,24,21,.14)); }

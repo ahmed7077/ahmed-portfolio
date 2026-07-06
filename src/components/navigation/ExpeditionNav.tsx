@@ -29,7 +29,7 @@ export function ExpeditionNav() {
                     {label}
                   </span>
                 )}
-                <span className={`block rounded-full border border-[#1e3a34]/30 transition-all ${active === id ? "h-3 w-3 bg-[#b86b4b]" : "h-2 w-2 bg-[#f5f1e8]"}`} />
+                <span className={`expedition-nav__dot block rounded-full border border-[#1e3a34]/30 transition-all ${active === id ? "h-3 w-3 bg-[#b86b4b]" : "h-2 w-2 bg-[#f5f1e8]"}`} />
               </a>
             </li>
           ))}
