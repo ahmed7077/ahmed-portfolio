@@ -163,52 +163,24 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 .fog-transition__volume--two { left: 32%; width: 62vw; height: 145px; opacity: .38; animation-delay: -4s; animation-duration: 14s; }
 .fog-transition__volume--three { left: 72%; width: 48vw; height: 120px; opacity: .32; animation-delay: -8s; animation-duration: 17s; }
 .flow-orbit { animation: orbit-breathe 12s ease-in-out infinite alternate; }
-.field-notes-map { opacity: .42; }
-.field-notes-map svg { width: 100%; height: 100%; }
-.field-notes-map path {
-  fill: none; stroke: rgba(30,58,52,.16); stroke-width: 1;
-  stroke-dasharray: 14 18; vector-effect: non-scaling-stroke;
-  animation: field-route-flow 18s linear infinite;
-}
-.field-notes-map path:nth-child(2) { animation-duration: 24s; animation-direction: reverse; }
-.field-notes-map path:nth-child(3) { stroke: rgba(184,107,75,.14); animation-duration: 28s; }
-.field-notes-ring {
+.field-notes-map { opacity: 1; }
+.field-notes-ring, .field-notes-observatory__ring {
   position: absolute; display: block; border-radius: 50%;
-  border: 1px solid rgba(30,58,52,.14); box-shadow: 0 0 0 34px rgba(30,58,52,.025);
-  animation: field-ring-breathe 9s ease-in-out infinite alternate;
+  border: 1px solid rgba(30,58,52,.24);
+  box-shadow: 0 0 0 28px rgba(30,58,52,.028), inset 0 0 34px rgba(196,154,87,.035);
+  opacity: .78;
+  will-change: transform;
+  animation: field-ring-unified 10s ease-in-out infinite alternate;
 }
-.field-notes-ring::after {
+.field-notes-ring::after, .field-notes-observatory__ring::after {
   content: ""; position: absolute; inset: 14%; border-radius: inherit;
-  border: 1px dashed rgba(184,107,75,.2); animation: field-ring-spin 30s linear infinite;
+  border: 1px dashed rgba(184,107,75,.28); animation: field-ring-spin 28s linear infinite;
 }
 .field-notes-ring--large { right: -10rem; top: 4rem; width: 34rem; height: 34rem; }
-.field-notes-ring--small { left: 7%; bottom: -8rem; width: 19rem; height: 19rem; animation-delay: -4s; }
-.field-notes-observatory {
-  opacity: .88; border-radius: 50%;
-  background: radial-gradient(circle at 62% 50%, rgba(196,154,87,.12), transparent 38%);
-}
-.field-notes-observatory svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.field-notes-observatory svg path {
-  fill: none; stroke: rgba(30,58,52,.34); stroke-width: 1.2; stroke-dasharray: 10 13;
-  vector-effect: non-scaling-stroke; animation: field-route-flow 12s linear infinite;
-}
-.field-notes-observatory svg path:nth-child(2) { stroke: rgba(184,107,75,.3); animation-direction: reverse; animation-duration: 17s; }
-.field-notes-observatory svg path:nth-child(3) { animation-duration: 21s; }
-.field-notes-observatory__ring {
-  position: absolute; border-radius: 50%; border: 1px solid rgba(30,58,52,.3);
-  animation: observatory-orbit 10s ease-in-out infinite alternate;
-}
-.field-notes-observatory__ring::after {
-  content: ""; position: absolute; inset: 12%; border-radius: inherit; border: 1px dashed rgba(196,154,87,.38);
-  animation: field-ring-spin 24s linear infinite;
-}
-.field-notes-observatory__ring--one { right: 7%; top: 2%; width: 280px; height: 280px; }
-.field-notes-observatory__ring--two { left: 14%; bottom: -16%; width: 190px; height: 190px; animation-delay: -5s; }
-.field-notes-observatory__core {
-  position: absolute; right: calc(7% + 133px); top: calc(2% + 133px); width: 14px; height: 14px;
-  border-radius: 50%; background: #b86b4b; box-shadow: 0 0 0 12px rgba(184,107,75,.1), 0 0 36px rgba(184,107,75,.55);
-  animation: observatory-core 2.4s ease-in-out infinite;
-}
+.field-notes-ring--small { left: 7%; bottom: -8rem; width: 19rem; height: 19rem; animation-delay: -3s; }
+.field-notes-observatory { opacity: 1; }
+.field-notes-observatory__ring--one { right: 7%; top: 2%; width: 280px; height: 280px; animation-delay: -5s; }
+.field-notes-observatory__ring--two { left: 14%; bottom: -16%; width: 190px; height: 190px; animation-delay: -7s; }
 .growth-map-rings span {
   position: absolute; border-radius: 50%; border: 1px solid rgba(30,58,52,.15);
   box-shadow: 0 0 0 38px rgba(123,146,120,.035), 0 0 0 78px rgba(184,107,75,.025);
@@ -299,8 +271,7 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes field-route-flow { to { stroke-dashoffset: -256; } }
 @keyframes field-ring-breathe { to { transform: translate3d(-18px, 12px, 0) scale(1.07); opacity: .65; } }
 @keyframes field-ring-spin { to { transform: rotate(360deg); } }
-@keyframes observatory-orbit { to { transform: translate3d(-20px,12px,0) scale(1.08) rotate(8deg); } }
-@keyframes observatory-core { 50% { transform: scale(1.35); box-shadow: 0 0 0 22px rgba(184,107,75,.03), 0 0 50px rgba(184,107,75,.65); } }
+@keyframes field-ring-unified { to { transform: translate3d(-22px,14px,0) scale(1.075) rotate(7deg); opacity: .78; } }
 @keyframes growth-ring-drift { to { transform: translate3d(-30px,22px,0) scale(1.1) rotate(10deg); opacity: .72; } }
 @keyframes future-route-flow { to { stroke-dashoffset: -232; } }
 @keyframes future-orbit-drift { to { transform: translate3d(-32px,22px,0) scale(1.08) rotate(9deg); } }
