@@ -52,6 +52,7 @@ export function GrowthMap() {
         <SectionHeading index="02" title="A map of becoming" note="Each coordinate compounds into the next. The path is not linear, but the direction is deliberate." />
         <div className="relative grid gap-0 md:grid-cols-4">
           <div className="absolute left-[15px] top-0 h-full w-px bg-[#1e3a34]/20 md:left-0 md:top-[15px] md:h-px md:w-full" />
+          <div className="absolute left-0 top-1/2 hidden h-px w-full bg-[#1e3a34]/20 md:block" />
           {journey.map(([id, label, tech], index) => (
             <motion.article key={id} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: index * .08 }} className="group relative grid grid-cols-[32px_1fr] gap-5 pb-10 md:block md:pr-8 md:pb-14">
               <span className="relative z-10 block h-[31px] w-[31px] rounded-full border-4 border-[#eee5d4] bg-[#1e3a34] transition group-hover:scale-125" />
