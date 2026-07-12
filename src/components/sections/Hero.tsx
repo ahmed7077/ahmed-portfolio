@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { MapPin } from "lucide-react";
 import { ContourLayer } from "@/components/background/ContourLayer";
@@ -13,6 +14,16 @@ import { profile } from "@/data/profile";
 const TerrainScene = dynamic(() => import("@/components/three/TerrainScene"), { ssr: false });
 
 export function Hero() {
+  const [showTerrain, setShowTerrain] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    const sync = () => setShowTerrain(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
   return (
     <section id="arrival" className="relative min-h-[760px] overflow-hidden bg-[#1e3a34] text-[#f5f1e8] md:min-h-screen">
       <ContourLayer />
@@ -29,14 +40,16 @@ export function Hero() {
           <span key={index} style={{ left, top, width: size, height: size, animationDelay: delay }} />
         ))}
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-2/3 opacity-75 [mask-image:linear-gradient(to_top,black,transparent)]">
-        <TerrainScene />
+      <div className="absolute inset-x-0 bottom-0 hidden h-2/3 opacity-75 [mask-image:linear-gradient(to_top,black,transparent)] md:block">
+        {showTerrain && <TerrainScene />}
+      </div>
+      <div className="absolute inset-x-0 bottom-0 h-2/3 opacity-40 [background:radial-gradient(ellipse_at_70%_90%,rgba(196,154,87,.35),transparent_58%),linear-gradient(135deg,transparent_35%,rgba(245,241,232,.08)_36%,transparent_38%)] md:hidden" aria-hidden="true">
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,24,21,.78)_0%,rgba(22,24,21,.3)_55%,rgba(22,24,21,.15)_100%)]" />
       <Container className="relative z-10 flex min-h-[760px] flex-col justify-between py-7 md:min-h-screen md:py-10">
-        <header className="flex items-center justify-between border-b border-[#f5f1e8]/15 pb-5">
+        <header className="flex items-center justify-between gap-5 border-b border-[#f5f1e8]/15 pb-5">
           <div className="ma-orbit grid h-12 w-12 place-items-center rounded-full font-display text-xl" aria-label="Muhammad Ahmed monogram">MA</div>
-          <p className="font-mono text-[10px] uppercase tracking-[.2em] text-[#f5f1e8]/55">Living Intelligence / Portfolio 2026</p>
+          <p className="text-right font-mono text-[9px] uppercase tracking-[.16em] text-[#f5f1e8]/55 sm:text-[10px] sm:tracking-[.2em]">Living Intelligence / Portfolio 2026</p>
         </header>
         <div className="grid items-end gap-10 py-16 md:grid-cols-[minmax(0,1fr)_360px]">
           <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, ease: [0.22, 1, 0.36, 1] }}>
@@ -49,15 +62,15 @@ export function Hero() {
               <a href="/muhammad-ahmed-resume.pdf" target="_blank" className="lap-border inline-flex min-h-12 items-center rounded-full border border-[#f5f1e8]/25 px-6 text-sm text-[#f5f1e8]/75 transition">View resume ↗</a>
             </div>
           </motion.div>
-          <aside className="flex items-end justify-between border-t border-[#f5f1e8]/15 pt-6 md:flex md:min-h-[500px] md:flex-col md:items-center md:justify-center md:border-l md:border-t-0 md:pl-10 md:text-center">
+          <aside className="grid gap-6 border-t border-[#f5f1e8]/15 pt-6 sm:grid-cols-[auto_1fr] md:flex md:min-h-[500px] md:flex-col md:items-center md:justify-center md:border-l md:border-t-0 md:pl-10 md:text-center">
             <motion.div animate={{ y: [0, -9, 0], rotate: [-1.5, 1.5, -1.5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
               <CompassGlyph className="h-24 w-24 text-[#c49a57] md:h-36 md:w-36" />
             </motion.div>
-            <div className="mt-5 max-w-[290px]">
+            <div className="max-w-[290px] md:mt-5">
               <p className="font-display text-2xl leading-tight">Welcome. Explore the journey.</p>
               <p className="mt-2 text-xs leading-5 text-[#f5f1e8]/45">Follow the coordinates from first principles to intelligent systems.</p>
             </div>
-            <div className="grid grid-cols-3 gap-2 md:mt-7 md:w-full">
+            <div className="grid grid-cols-3 gap-2 sm:col-span-2 md:mt-7 md:w-full">
               {[
                 ["github", profile.github, "GitHub"],
                 ["linkedin", profile.linkedin, "LinkedIn"],
@@ -70,7 +83,7 @@ export function Hero() {
             </div>
           </aside>
         </div>
-        <div className="flex items-center justify-between border-t border-[#f5f1e8]/15 pt-5 font-mono text-[10px] uppercase tracking-[.2em] text-[#f5f1e8]/45">
+        <div className="flex flex-col gap-2 border-t border-[#f5f1e8]/15 pt-5 font-mono text-[9px] uppercase tracking-[.16em] text-[#f5f1e8]/45 sm:flex-row sm:items-center sm:justify-between sm:text-[10px] sm:tracking-[.2em]">
           <span>Scroll to begin expedition</span><span>12.9716° N / 77.5946° E</span>
         </div>
       </Container>

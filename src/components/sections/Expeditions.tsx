@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Orbit } from "lucide-react";
@@ -97,7 +97,15 @@ export function Projects() {
 export function KnowledgeNetwork() {
   const [active, setActive] = useState("Programming");
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const [showConstellation, setShowConstellation] = useState(false);
   const activeIndex = Object.keys(skills).indexOf(active);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    const sync = () => setShowConstellation(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   return (
     <section id="network" className="topo topo-orbits relative overflow-hidden border-y hairline bg-[#e7dcc8]/45 py-24 md:py-36">
       <Container className="relative z-10">
@@ -111,7 +119,7 @@ export function KnowledgeNetwork() {
             ))}
           </div>
           <div className="relative min-h-[390px] overflow-hidden rounded-[2rem] bg-[#1e3a34] p-7 text-[#f5f1e8] md:p-12">
-            <div className="pointer-events-none absolute inset-0 opacity-80" aria-hidden="true"><SkillConstellation activeSeed={activeIndex} /></div>
+            {showConstellation && <div className="pointer-events-none absolute inset-0 opacity-80" aria-hidden="true"><SkillConstellation activeSeed={activeIndex} /></div>}
             <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a34]/90 via-[#1e3a34]/35 to-transparent" />
             <p className="relative font-mono text-[10px] uppercase tracking-[.2em] text-[#c49a57]">Active cluster / {active}</p>
             <div className="relative mt-14 flex flex-wrap gap-3">

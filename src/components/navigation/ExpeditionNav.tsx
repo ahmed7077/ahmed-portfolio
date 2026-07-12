@@ -29,7 +29,7 @@ export function ExpeditionNav() {
         onBlurCapture={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) setExpanded(false);
         }}
-        className="expedition-nav fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 lg:block"
+        className="expedition-nav fixed z-50"
       >
         <ol className="expedition-nav__track flex flex-col items-end gap-4">
           {items.map(([id, label]) => (
