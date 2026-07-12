@@ -13,6 +13,31 @@ const education = [
   ["2008 — 2021", "10th ICSE", "Ryan International School, Bengaluru", "81%"],
 ];
 
+const credentials = [
+  {
+    status: "Completed · July 2026",
+    title: "Generative AI Foundations Certificate",
+    issuer: "upGrad",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Generative%20AI%20Foundations%20Certificate%20Program.pdf",
+  },
+  {
+    status: "Completed · July 2026",
+    title: "Java Programming & Data Structures",
+    issuer: "FacePrep · College Placement Program",
+  },
+  {
+    status: "Completed · April 2025",
+    title: "Python Course for Beginners: Mastering the Essentials",
+    issuer: "Scaler Topics",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Python%20Course%20for%20Beginners%20With%20Certification_%20Mastering%20the%20Essentials%20on%20Scaler%20Topics.pdf",
+  },
+  {
+    status: "Ongoing · Expected August 2026",
+    title: "CS50: Introduction to Computer Science",
+    issuer: "Harvard University",
+  },
+];
+
 export function Experience() {
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -73,8 +98,22 @@ export function CredentialsAndFuture() {
           <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
             <div><p className="eyebrow mb-5">07 / Credentials</p><h2 className="section-title">Markers of<br />progress</h2></div>
             <div className="space-y-4">
-              <article className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6"><span className="font-mono text-[9px] uppercase text-[#b86b4b]">Completed · 2026</span><h3 className="mt-3 font-display text-2xl">Generative AI Foundations Certificate</h3><p className="mt-2 text-sm text-[#1e3a34]/55">upGrad · Certificate available publicly on GitHub</p></article>
-              <article className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6"><span className="font-mono text-[9px] uppercase text-[#b86b4b]">Ongoing · Expected 8 July 2026</span><h3 className="mt-3 font-display text-2xl">Java Programming & Data Structures</h3><p className="mt-2 text-sm text-[#1e3a34]/55">FacePrep · College Placement Program</p></article>
+              {credentials.map(({ status, title, issuer, href }) => (
+                <article key={title} className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#f5f1e8] hover:shadow-[0_18px_50px_rgba(30,58,52,.08)]">
+                  <span className="font-mono text-[9px] uppercase text-[#b86b4b]">{status}</span>
+                  <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <h3 className="font-display text-2xl leading-tight">{title}</h3>
+                      <p className="mt-2 text-sm text-[#1e3a34]/55">{issuer}</p>
+                    </div>
+                    {href && (
+                      <a href={href} target="_blank" rel="noreferrer" className="lap-border inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
+                        View certificate <ArrowUpRight size={13} />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </Container>
