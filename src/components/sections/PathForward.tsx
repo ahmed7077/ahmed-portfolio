@@ -15,7 +15,7 @@ const education = [
 
 const credentials = [
   {
-    status: "Completed · July 2026",
+    status: "Completed · June 2026",
     title: "Generative AI Foundations Certificate",
     issuer: "upGrad",
     href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Generative%20AI%20Foundations%20Certificate%20Program.pdf",
