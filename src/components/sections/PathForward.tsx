@@ -32,9 +32,10 @@ const credentials = [
     href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Python%20Course%20for%20Beginners%20With%20Certification_%20Mastering%20the%20Essentials%20on%20Scaler%20Topics.pdf",
   },
   {
-    status: "Ongoing · Expected August 2026",
+    status: "Completed · August 2026",
     title: "CS50: Introduction to Computer Science",
     issuer: "Harvard University",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/CS50x.pdf",
   },
 ];
 
