@@ -37,6 +37,12 @@ const credentials = [
     issuer: "Harvard University",
     href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/CS50x.pdf",
   },
+  {
+    status: "Completed · September 2026",
+    title: "Artificial Intelligence Fundamentals",
+    issuer: "IBM SkillsBuild",
+    href: "/artificial-intelligence-fundamentals-ibm.pdf",
+  },
 ];
 
 export function Experience() {
