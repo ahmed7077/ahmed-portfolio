@@ -59,7 +59,7 @@ export function Hero() {
             <p className="mt-7 max-w-2xl text-base leading-7 text-[#f5f1e8]/72 md:text-lg">{profile.intro}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="#work" dark>Explore my work</Button>
-              <a href="/muhammad-ahmed-resume.pdf" target="_blank" className="lap-border inline-flex min-h-12 items-center rounded-full border border-[#f5f1e8]/25 px-6 text-sm text-[#f5f1e8]/75 transition">View resume ↗</a>
+              <a href="/muhammad-ahmed-resume-september-2026.pdf" target="_blank" className="lap-border inline-flex min-h-12 items-center rounded-full border border-[#f5f1e8]/25 px-6 text-sm text-[#f5f1e8]/75 transition">View resume ↗</a>
             </div>
           </motion.div>
           <aside className="grid gap-6 border-t border-[#f5f1e8]/15 pt-6 sm:grid-cols-[auto_1fr] md:flex md:min-h-[500px] md:flex-col md:items-center md:justify-center md:border-l md:border-t-0 md:pl-10 md:text-center">
