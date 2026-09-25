@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import Image from "next/image";
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Check, Copy, Mail, Sprout } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -42,6 +43,13 @@ const credentials = [
     title: "Artificial Intelligence Fundamentals",
     issuer: "IBM SkillsBuild",
     href: "/artificial-intelligence-fundamentals-ibm.pdf",
+  },
+  {
+    status: "Completed · September 2026",
+    title: "Machine Learning with Python",
+    issuer: "IBM · Coursera",
+    href: "/machine-learning-with-python.pdf",
+    badge: "/machine-learning-with-python-v2.png",
   },
 ];
 
@@ -97,6 +105,7 @@ export function Experience() {
 }
 
 export function CredentialsAndFuture() {
+  const reduceMotion = useReducedMotion();
   const future = ["Agentic AI", "Retrieval-Augmented Generation", "Model Context Protocol", "Efficient LLM Adaptation", "Multi-Agent Systems", "Advanced Computer Vision", "AI Engineering Workflows"];
   return (
     <>
@@ -105,7 +114,7 @@ export function CredentialsAndFuture() {
           <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
             <div><p className="eyebrow mb-5">07 / Credentials</p><h2 className="section-title">Markers of<br />progress</h2></div>
             <div className="space-y-4">
-              {credentials.map(({ status, title, issuer, href }) => (
+              {credentials.map(({ status, title, issuer, href, badge }) => (
                 <article key={title} className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#f5f1e8] hover:shadow-[0_18px_50px_rgba(30,58,52,.08)]">
                   <span className="font-mono text-[9px] uppercase text-[#b86b4b]">{status}</span>
                   <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -113,11 +122,22 @@ export function CredentialsAndFuture() {
                       <h3 className="font-display text-2xl leading-tight">{title}</h3>
                       <p className="mt-2 text-sm text-[#1e3a34]/55">{issuer}</p>
                     </div>
-                    {href && (
-                      <a href={href} target="_blank" rel="noreferrer" className="lap-border inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
-                        View certificate <ArrowUpRight size={13} />
-                      </a>
-                    )}
+                    <div className="flex shrink-0 items-center gap-4">
+                      {badge && (
+                        <motion.div
+                          animate={reduceMotion ? undefined : { rotate: 360 }}
+                          transition={{ duration: 18, ease: "linear", repeat: Infinity }}
+                          className="relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
+                        >
+                          <Image src={badge} alt="IBM Machine Learning with Python V2 digital credential badge" fill sizes="96px" className="rounded-full object-cover" />
+                        </motion.div>
+                      )}
+                      {href && (
+                        <a href={href} target="_blank" rel="noreferrer" className="lap-border inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
+                          View certificate <ArrowUpRight size={13} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}
