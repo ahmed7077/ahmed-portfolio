@@ -125,7 +125,7 @@ export function CredentialsAndFuture() {
                     <div className="flex shrink-0 items-center gap-4">
                       {badge && (
                         <motion.div
-                          animate={reduceMotion ? undefined : { rotateX: 360 }}
+                          animate={reduceMotion ? undefined : { rotateY: 360 }}
                           transition={{ duration: 18, ease: "linear", repeat: Infinity }}
                           style={{ transformPerspective: 900, transformStyle: "preserve-3d" }}
                           className="relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
