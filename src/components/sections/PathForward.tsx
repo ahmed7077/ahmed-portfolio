@@ -16,27 +16,11 @@ const education = [
 
 const credentials = [
   {
-    status: "Completed · June 2026",
-    title: "Generative AI Foundations Certificate",
-    issuer: "upGrad",
-    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Generative%20AI%20Foundations%20Certificate%20Program.pdf",
-  },
-  {
-    status: "Completed · July 2026",
-    title: "Java Programming & Data Structures",
-    issuer: "FacePrep · College Placement Program",
-  },
-  {
-    status: "Completed · April 2025",
-    title: "Python Course for Beginners: Mastering the Essentials",
-    issuer: "Scaler Topics",
-    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Python%20Course%20for%20Beginners%20With%20Certification_%20Mastering%20the%20Essentials%20on%20Scaler%20Topics.pdf",
-  },
-  {
-    status: "Completed · August 2026",
-    title: "CS50: Introduction to Computer Science",
-    issuer: "Harvard University",
-    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/CS50x.pdf",
+    status: "Completed · September 2026",
+    title: "Machine Learning with Python",
+    issuer: "IBM · Coursera",
+    href: "/machine-learning-with-python.pdf",
+    badge: "/machine-learning-with-python-v2.png",
   },
   {
     status: "Completed · September 2026",
@@ -45,11 +29,27 @@ const credentials = [
     href: "/artificial-intelligence-fundamentals-ibm.pdf",
   },
   {
-    status: "Completed · September 2026",
-    title: "Machine Learning with Python",
-    issuer: "IBM · Coursera",
-    href: "/machine-learning-with-python.pdf",
-    badge: "/machine-learning-with-python-v2.png",
+    status: "Completed · August 2026",
+    title: "CS50: Introduction to Computer Science",
+    issuer: "Harvard University",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/CS50x.pdf",
+  },
+  {
+    status: "Completed · July 2026",
+    title: "Java Programming & Data Structures",
+    issuer: "FacePrep · College Placement Program",
+  },
+  {
+    status: "Completed · June 2026",
+    title: "Generative AI Foundations Certificate",
+    issuer: "upGrad",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Generative%20AI%20Foundations%20Certificate%20Program.pdf",
+  },
+  {
+    status: "Completed · April 2025",
+    title: "Python Course for Beginners: Mastering the Essentials",
+    issuer: "Scaler Topics",
+    href: "https://github.com/ahmed7077/ahmed7077/blob/main/Certificates/Python%20Course%20for%20Beginners%20With%20Certification_%20Mastering%20the%20Essentials%20on%20Scaler%20Topics.pdf",
   },
 ];
 
@@ -125,8 +125,9 @@ export function CredentialsAndFuture() {
                     <div className="flex shrink-0 items-center gap-4">
                       {badge && (
                         <motion.div
-                          animate={reduceMotion ? undefined : { rotate: 360 }}
+                          animate={reduceMotion ? undefined : { rotateX: 360 }}
                           transition={{ duration: 18, ease: "linear", repeat: Infinity }}
+                          style={{ transformPerspective: 900, transformStyle: "preserve-3d" }}
                           className="relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
                         >
                           <Image src={badge} alt="IBM Machine Learning with Python V2 digital credential badge" fill sizes="96px" className="rounded-full object-cover" />
