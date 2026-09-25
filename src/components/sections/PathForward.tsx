@@ -125,12 +125,17 @@ export function CredentialsAndFuture() {
                     <div className="flex shrink-0 items-center gap-4">
                       {badge && (
                         <motion.div
-                          animate={reduceMotion ? undefined : { rotateY: 360 }}
-                          transition={{ duration: 18, ease: "linear", repeat: Infinity }}
-                          style={{ transformPerspective: 900, transformStyle: "preserve-3d" }}
-                          className="relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
+                          whileHover={reduceMotion ? undefined : { y: -8 }}
+                          transition={{ duration: .28, ease: "easeOut" }}
+                          style={{ perspective: 900 }}
+                          className="credential-badge relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
                         >
-                          <Image src={badge} alt="IBM Machine Learning with Python V2 digital credential badge" fill sizes="96px" className="rounded-full object-cover" />
+                          <div className="credential-badge__spinner absolute inset-0 rounded-full">
+                            <Image src={badge} alt="IBM Machine Learning with Python V2 digital credential badge" fill sizes="96px" className="rounded-full object-cover" />
+                          </div>
+                          <span className="credential-badge__label pointer-events-none absolute inset-0 z-10 flex items-center justify-center rounded-full bg-[#161815]/60 px-2 text-center font-mono text-[9px] uppercase tracking-[.12em] text-[#f5f1e8] backdrop-blur-[2px]">
+                            IBM badge
+                          </span>
                         </motion.div>
                       )}
                       {href && (

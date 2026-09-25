@@ -288,6 +288,17 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 }
 .experience-card:hover { box-shadow: 0 42px 95px rgba(30,58,52,.3), 0 0 42px rgba(196,154,87,.1); }
 .experience-card > * { transform: translateZ(18px); }
+.credential-badge__spinner {
+  transform-style: preserve-3d;
+  animation: credential-badge-revolve 18s linear infinite;
+}
+.credential-badge:hover .credential-badge__spinner { animation-play-state: paused; }
+.credential-badge__label {
+  opacity: 0;
+  transform: scale(.86);
+  transition: opacity .25s ease, transform .3s cubic-bezier(.22,1,.36,1);
+}
+.credential-badge:hover .credential-badge__label { opacity: 1; transform: scale(1); }
 .future-expedition__map { opacity: .62; }
 .future-expedition__map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .future-expedition__map path {
@@ -370,6 +381,7 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
 @keyframes contour-drift { to { stroke-dashoffset: -120; } }
 @keyframes field-breathe { to { transform: scale(1.025) translate3d(-.8%, .6%, 0); opacity: .72; } }
 @keyframes border-lap { to { --lap-angle: 360deg; } }
+@keyframes credential-badge-revolve { to { transform: rotateY(360deg); } }
 @keyframes ma-pulse { 0% { transform: scale(.62); opacity: 0; } 35% { opacity: .75; } 100% { transform: scale(1.45); opacity: 0; } }
 @keyframes orb-drift { to { transform: translate3d(38px, -28px, 0) scale(1.5); opacity: .28; } }
 @keyframes fog-drift { to { transform: translate(-46%, -46%) scale(1.08); opacity: .42; } }
@@ -400,6 +412,9 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
   button.rounded-full:active {
     transform: scale(.97);
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .credential-badge__spinner { animation: none; }
 }
 @media (max-width: 1023px) {
   .topographic-distortion {
