@@ -124,7 +124,11 @@ export function CredentialsAndFuture() {
                     </div>
                     <div className="flex shrink-0 items-center gap-4">
                       {badge && (
-                        <motion.div
+                        <motion.a
+                          href="https://www.credly.com/badges/d3c2a63c-5d9f-40c8-905e-bed1528a479b/public_url"
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label="View IBM Machine Learning with Python badge on Credly"
                           whileHover={reduceMotion ? undefined : { y: -8 }}
                           transition={{ duration: .28, ease: "easeOut" }}
                           style={{ perspective: 900 }}
@@ -136,7 +140,7 @@ export function CredentialsAndFuture() {
                           <span className="credential-badge__label pointer-events-none absolute inset-0 z-10 flex items-center justify-center rounded-full bg-[#161815]/60 px-2 text-center font-mono text-[9px] uppercase tracking-[.12em] text-[#f5f1e8] backdrop-blur-[2px]">
                             IBM badge
                           </span>
-                        </motion.div>
+                        </motion.a>
                       )}
                       {href && (
                         <a href={href} target="_blank" rel="noreferrer" className="lap-border inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
