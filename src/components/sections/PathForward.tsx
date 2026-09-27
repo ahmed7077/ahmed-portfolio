@@ -17,10 +17,21 @@ const education = [
 const credentials = [
   {
     status: "Completed · September 2026",
+    title: "Introduction to Deep Learning & Neural Networks with Keras",
+    issuer: "IBM · Coursera",
+    href: "/introduction-to-deep-learning-neural-networks.pdf",
+    badge: "/deep-learning-essentials-with-keras-ibm-badge.png",
+    badgeHref: "https://www.credly.com/badges/3e0d3002-b3e6-4f70-98e2-31c727cc2432/public_url",
+    badgeAlt: "IBM Deep Learning Essentials with Keras digital credential badge",
+  },
+  {
+    status: "Completed · September 2026",
     title: "Machine Learning with Python",
     issuer: "IBM · Coursera",
     href: "/machine-learning-with-python.pdf",
     badge: "/machine-learning-with-python-v2.png",
+    badgeHref: "https://www.credly.com/badges/d3c2a63c-5d9f-40c8-905e-bed1528a479b/public_url",
+    badgeAlt: "IBM Machine Learning with Python V2 digital credential badge",
   },
   {
     status: "Completed · September 2026",
@@ -114,7 +125,7 @@ export function CredentialsAndFuture() {
           <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
             <div><p className="eyebrow mb-5">07 / Credentials</p><h2 className="section-title">Markers of<br />progress</h2></div>
             <div className="space-y-4">
-              {credentials.map(({ status, title, issuer, href, badge }) => (
+              {credentials.map(({ status, title, issuer, href, badge, badgeHref, badgeAlt }) => (
                 <article key={title} className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#f5f1e8] hover:shadow-[0_18px_50px_rgba(30,58,52,.08)]">
                   <span className="font-mono text-[9px] uppercase text-[#b86b4b]">{status}</span>
                   <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -125,17 +136,17 @@ export function CredentialsAndFuture() {
                     <div className="flex shrink-0 items-center gap-4">
                       {badge && (
                         <motion.a
-                          href="https://www.credly.com/badges/d3c2a63c-5d9f-40c8-905e-bed1528a479b/public_url"
+                          href={badgeHref}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label="View IBM Machine Learning with Python badge on Credly"
+                          aria-label={`View ${title} badge on Credly`}
                           whileHover={reduceMotion ? undefined : { y: -8 }}
                           transition={{ duration: .28, ease: "easeOut" }}
                           style={{ perspective: 900 }}
                           className="credential-badge relative h-20 w-20 shrink-0 rounded-full shadow-[0_10px_28px_rgba(30,58,52,.14)] sm:h-24 sm:w-24"
                         >
                           <div className="credential-badge__spinner absolute inset-0 rounded-full">
-                            <Image src={badge} alt="IBM Machine Learning with Python V2 digital credential badge" fill sizes="96px" className="rounded-full object-cover" />
+                            <Image src={badge} alt={badgeAlt ?? `${title} digital credential badge`} fill sizes="96px" className="rounded-full object-cover" />
                           </div>
                           <span className="credential-badge__label pointer-events-none absolute inset-0 z-10 flex items-center justify-center rounded-full bg-[#161815]/60 px-2 text-center font-mono text-[9px] uppercase tracking-[.12em] text-[#f5f1e8] backdrop-blur-[2px]">
                             IBM badge
@@ -203,9 +214,9 @@ export function Contact() {
           <button onClick={copyEmail} className="inline-flex items-center gap-3 rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Email copied" : "Copy email"}</button>
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">LinkedIn ↗</a>
           <a href={profile.github} target="_blank" rel="noreferrer" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">GitHub ↗</a>
-          <a href="/muhammad-ahmed-resume-september-2026.pdf" target="_blank" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">Resume ↗</a>
+          <a href="/muhammad-ahmed-resume-7th-semester.pdf" target="_blank" className="rounded-full border border-[#f5f1e8]/20 px-6 py-4 text-sm">Resume ↗</a>
         </div>
-        <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[#f5f1e8]/12 pt-6 font-mono text-[9px] uppercase tracking-[.18em] text-[#f5f1e8]/35 sm:flex-row"><span>© 2026 Muhammad Ahmed</span><span>Bengaluru · India · Earth</span><a href="/muhammad-ahmed-resume-september-2026.pdf" target="_blank">Download resume ↗</a></div>
+        <div className="mt-24 flex flex-col justify-between gap-4 border-t border-[#f5f1e8]/12 pt-6 font-mono text-[9px] uppercase tracking-[.18em] text-[#f5f1e8]/35 sm:flex-row"><span>© 2026 Muhammad Ahmed</span><span>Bengaluru · India · Earth</span><a href="/muhammad-ahmed-resume-7th-semester.pdf" target="_blank">Download resume ↗</a></div>
       </Container>
     </footer>
   );
