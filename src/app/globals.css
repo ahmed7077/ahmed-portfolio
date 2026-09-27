@@ -450,8 +450,10 @@ button.rounded-full:hover::before, button.rounded-full:focus-visible::before {
     width: min(100% - 28px, 1180px);
   }
   .display-title {
-    font-size: clamp(4.15rem, 18vw, 5.8rem);
-    line-height: .88;
+    max-width: 100%;
+    font-size: clamp(3.55rem, 15.5vw, 4.5rem);
+    line-height: .92;
+    letter-spacing: -.05em;
   }
   .section-title {
     font-size: clamp(2.55rem, 13vw, 4.2rem);
