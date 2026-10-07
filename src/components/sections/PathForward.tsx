@@ -16,6 +16,15 @@ const education = [
 
 const credentials = [
   {
+    status: "Completed · October 2026",
+    title: "Deep Learning with Keras and TensorFlow",
+    issuer: "IBM · Coursera",
+    href: "https://coursera.org/share/e0486a4cf8b58816e4dfe52b9d12b78c",
+    badge: "/advanced-deep-learning-specialist.png",
+    badgeHref: "https://www.credly.com/badges/3b6c18ce-6d7f-4e20-bbfa-4c949721188e/public_url",
+    badgeAlt: "IBM Advanced Deep Learning Specialist digital credential badge",
+  },
+  {
     status: "Completed · September 2026",
     title: "Introduction to Deep Learning & Neural Networks with Keras",
     issuer: "IBM · Coursera",
@@ -122,18 +131,17 @@ export function CredentialsAndFuture() {
     <>
       <section className="border-y hairline bg-[#e7dcc8]/40 py-24">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-            <div><p className="eyebrow mb-5">07 / Credentials</p><h2 className="section-title">Markers of<br />progress</h2></div>
-            <div className="space-y-4">
+          <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div><p className="eyebrow mb-5">07 / Credentials</p><h2 className="section-title">Markers of progress</h2></div>
+            <p className="max-w-md text-sm leading-7 text-[#1e3a34]/60">A growing record of focused study, ordered from the latest milestone backward.</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
               {credentials.map(({ status, title, issuer, href, badge, badgeHref, badgeAlt }) => (
-                <article key={title} className="rounded-2xl border hairline bg-[#f5f1e8]/70 p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#f5f1e8] hover:shadow-[0_18px_50px_rgba(30,58,52,.08)]">
+                <article key={title} className="flex min-h-64 flex-col rounded-2xl border hairline bg-[#f5f1e8]/70 p-6 transition duration-300 hover:-translate-y-1 hover:bg-[#f5f1e8] hover:shadow-[0_18px_50px_rgba(30,58,52,.08)]">
                   <span className="font-mono text-[9px] uppercase text-[#b86b4b]">{status}</span>
-                  <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <h3 className="font-display text-2xl leading-tight">{title}</h3>
-                      <p className="mt-2 text-sm text-[#1e3a34]/55">{issuer}</p>
-                    </div>
-                    <div className="flex shrink-0 items-center gap-4">
+                  <h3 className="mt-3 max-w-lg font-display text-2xl leading-tight">{title}</h3>
+                  <p className="mt-2 text-sm text-[#1e3a34]/55">{issuer}</p>
+                  <div className="mt-auto flex min-h-24 flex-wrap items-end justify-between gap-4 pt-6">
                       {badge && (
                         <motion.a
                           href={badgeHref}
@@ -154,15 +162,13 @@ export function CredentialsAndFuture() {
                         </motion.a>
                       )}
                       {href && (
-                        <a href={href} target="_blank" rel="noreferrer" className="lap-border inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
+                        <a href={href} target="_blank" rel="noreferrer" className="lap-border ml-auto inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#1e3a34]/20 px-4 py-2 text-xs text-[#1e3a34]">
                           View certificate <ArrowUpRight size={13} />
                         </a>
                       )}
-                    </div>
                   </div>
                 </article>
               ))}
-            </div>
           </div>
         </Container>
       </section>
