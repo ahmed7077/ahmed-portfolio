@@ -5,6 +5,7 @@ export const profile = {
   email: "ahmedmu7077@gmail.com",
   github: "https://github.com/ahmed7077",
   linkedin: "https://linkedin.com/in/muhammad-ahmed05",
+  resume: "/muhammad-ahmed-resume.pdf?v=2026-10-11",
   intro:
     "Building intelligent systems that connect Large Language Models, Computer Vision, and Edge AI with real-world problem solving.",
   about:
