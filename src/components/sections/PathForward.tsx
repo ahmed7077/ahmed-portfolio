@@ -17,6 +17,12 @@ const education = [
 const credentials = [
   {
     status: "Completed · October 2026",
+    title: "Introduction to Neural Networks and PyTorch",
+    issuer: "IBM · Coursera",
+    href: "/introduction-to-neural-networks-and-pytorch.pdf",
+  },
+  {
+    status: "Completed · October 2026",
     title: "Deep Learning with Keras and TensorFlow",
     issuer: "IBM · Coursera",
     href: "https://coursera.org/share/e0486a4cf8b58816e4dfe52b9d12b78c",
