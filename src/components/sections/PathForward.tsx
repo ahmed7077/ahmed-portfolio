@@ -19,7 +19,7 @@ const credentials = [
     status: "Completed · October 2026",
     title: "Introduction to Neural Networks and PyTorch",
     issuer: "IBM · Coursera",
-    href: "/introduction-to-neural-networks-and-pytorch.pdf",
+    href: "https://coursera.org/share/c933bbdadb4db9a6f1491412cdc45626",
   },
   {
     status: "Completed · October 2026",
