@@ -12,6 +12,18 @@ export const projects = [
     href: "https://github.com/ahmed7077/ai-remote-patient-monitoring", tone: "signal",
   },
   {
+    title: "Shabooya", label: "Student tools",
+    description: "A mobile-first attendance app for students to build timetables, track attendance by subject, and plan around attendance targets. Students can mark attendance offline and sync later.",
+    tech: ["Next.js", "TypeScript", "Supabase", "IndexedDB"],
+    href: "https://github.com/ahmed7077/Shabooya", tone: "vision",
+  },
+  {
+    title: "FileFlow", label: "File management",
+    description: "A Java file organizer that scans nested folders, sorts files by their attributes, and identifies duplicates using SHA-256 hashes.",
+    tech: ["Java", "Maven", "File I/O", "SHA-256"],
+    href: "https://github.com/ahmed7077/FileFlow", tone: "roots",
+  },
+  {
     title: "Astronomical Event Detection", label: "Edge vision · 2025",
     description: "A low-power vision system for Raspberry Pi Zero 2 W that captures and preprocesses sky imagery to identify meteor streaks, satellite tracks, star clusters, aurora presence, and planetary alignment.",
     tech: ["Python", "OpenCV", "Raspberry Pi", "Flask"],
