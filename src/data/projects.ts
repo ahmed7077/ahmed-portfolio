@@ -12,13 +12,13 @@ export const projects = [
     href: "https://github.com/ahmed7077/ai-remote-patient-monitoring", tone: "signal",
   },
   {
-    title: "Shabooya", label: "Student tools",
+    title: "Shabooya", label: "Student tools · 2026",
     description: "A mobile-first attendance app for students to build timetables, track attendance by subject, and plan around attendance targets. Students can mark attendance offline and sync later.",
     tech: ["Next.js", "TypeScript", "Supabase", "IndexedDB"],
     href: "https://github.com/ahmed7077/Shabooya", tone: "vision",
   },
   {
-    title: "FileFlow", label: "File management",
+    title: "FileFlow", label: "File management · 2026",
     description: "A Java file organizer that scans nested folders, sorts files by their attributes, and identifies duplicates using SHA-256 hashes.",
     tech: ["Java", "Maven", "File I/O", "SHA-256"],
     href: "https://github.com/ahmed7077/FileFlow", tone: "roots",
