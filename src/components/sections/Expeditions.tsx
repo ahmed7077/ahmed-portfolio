@@ -59,16 +59,16 @@ function ProjectArtifact({ project, index }: { project: (typeof projects)[number
       className={`depth-card group relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${tones[project.tone]} text-[#f5f1e8]`}
     >
       <motion.div style={{ x: farX }} className="pointer-events-none absolute -inset-16 opacity-20 [background:radial-gradient(circle_at_center,rgba(196,154,87,.4),transparent_55%)]" />
-      <motion.div style={{ x: nearX, y: nearY }} className="absolute right-5 top-0 font-display text-[8rem] leading-none opacity-40 project-index md:text-[13rem]">0{index + 1}</motion.div>
-      <div className="relative grid min-h-[370px] gap-10 p-7 md:grid-cols-[.7fr_1.3fr] md:p-12">
-        <motion.div style={{ x: farX }} className="flex flex-col justify-between">
+      <motion.div style={{ x: nearX, y: nearY }} className="absolute right-4 top-1 font-display text-[7rem] leading-none opacity-40 project-index md:text-[9rem]">0{index + 1}</motion.div>
+      <div className="relative flex min-h-[340px] flex-col justify-between gap-12 p-7 md:p-9">
+        <motion.div style={{ x: farX }} className="flex items-start justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[.18em] text-[#c49a57]">{project.label}</p>
-          <Orbit className="hidden text-[#f5f1e8]/20 md:block" size={90} strokeWidth={.6} />
+          <Orbit className="hidden text-[#f5f1e8]/20 sm:block" size={52} strokeWidth={.6} />
         </motion.div>
-        <motion.div style={{ x: nearX, y: nearY }} className="self-end">
-          <h3 className="font-display text-4xl leading-none md:text-6xl">{project.title}</h3>
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-[#f5f1e8]/62">{project.description}</p>
-          <div className="mt-7 flex flex-wrap items-center gap-2">
+        <motion.div style={{ x: nearX, y: nearY }}>
+          <h3 className="max-w-md font-display text-4xl leading-none md:text-5xl">{project.title}</h3>
+          <p className="mt-5 max-w-xl text-sm leading-6 text-[#f5f1e8]/62">{project.description}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-2">
             {project.tech.map((tech) => <span key={tech} className="rounded-full border border-[#f5f1e8]/15 px-3 py-1 font-mono text-[9px]">{tech}</span>)}
             <a href={project.href} target="_blank" rel="noreferrer" aria-label={`View ${project.title} on GitHub`} className="ml-auto grid h-12 w-12 place-items-center rounded-full bg-[#f5f1e8] text-[#161815] transition group-hover:rotate-12 group-hover:scale-110"><ArrowUpRight size={18} /></a>
           </div>
@@ -86,7 +86,7 @@ export function Projects() {
       <div className="absolute inset-0 bg-[#f5f1e8]/30" aria-hidden="true" />
       <Container className="relative z-10">
         <SectionHeading index="04" title="Research expeditions" note="Selected projects that turn AI research into practical systems for language, vision, and connected environments." />
-        <div className="space-y-5">
+        <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project, index) => <ProjectArtifact key={project.title} project={project} index={index} />)}
         </div>
       </Container>
